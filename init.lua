@@ -26,3 +26,4 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
 
+vim.cmd [[packadd vim-fugitive]]
