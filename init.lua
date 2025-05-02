@@ -1,12 +1,21 @@
-vim.go.expandtab = true
-vim.go.tabstop = 2
-vim.go.shiftwidth = 2
-vim.go.softtabstop = 2
+local function set_options(opt)
+  opt.expandtab = true
+  opt.tabstop = 2
+  opt.shiftwidth = 2
+  opt.softtabstop = 2
+  opt.ignorecase = true
+  opt.smartcase = true
+  opt.relativenumber = true
+  opt.number = true
+end
+
+set_options(vim.go)
+if not vim.g.stroiman_loaded then
+  set_options(vim.opt)
+  vim.g.stroiman_loaded = true
+end
+
 vim.go.swapfile = false
-vim.go.ignorecase = true
-vim.go.smartcase = true
-vim.go.relativenumber = true
-vim.go.number = true
 
 local function reload()
   dofile(vim.env.MYVIMRC)
