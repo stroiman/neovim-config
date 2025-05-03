@@ -7,3 +7,9 @@
 [submodule "pack/vendor/opt/catppuccin"]
 	path = pack/vendor/opt/catppuccin
 	url = https://github.com/catppuccin/nvim
+[submodule "pack/vendor/opt/telescope.nvim"]
+	path = pack/vendor/opt/telescope
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "pack/vendor/opt/plenary"]
+	path = pack/vendor/opt/plenary
+	url = https://github.com/nvim-lua/plenary.nvim
