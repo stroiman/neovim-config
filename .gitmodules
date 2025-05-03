@@ -16,3 +16,12 @@
 [submodule "pack/vendor/opt/vim-tmux-navigator"]
 	path = pack/vendor/opt/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "pack/vendor/opt/nvim-lspconfig"]
+	path = pack/vendor/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "pack/vendor/opt/mason"]
+	path = pack/vendor/opt/mason
+	url = https://github.com/williamboman/mason.nvim
+[submodule "pack/vendor/opt/mason-lspconfig"]
+	path = pack/vendor/opt/mason-lspconfig
+	url = https://github.com/williamboman/mason-lspconfig.nvim
