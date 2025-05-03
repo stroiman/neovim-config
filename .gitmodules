@@ -13,3 +13,6 @@
 [submodule "pack/vendor/opt/plenary"]
 	path = pack/vendor/opt/plenary
 	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "pack/vendor/opt/vim-tmux-navigator"]
+	path = pack/vendor/opt/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
