@@ -12,6 +12,10 @@ end
 
 set_options(vim.go)
 
+vim.g.netrw_banner = 0
+vim.g.netrw_list_hide = [[^\.git\/$]]
+vim.g.netrw_sort_sequence = [[\/$]]
+
 if not vim.g.stroiman_loaded then
   set_options(vim.opt)
   vim.g.stroiman_loaded = true

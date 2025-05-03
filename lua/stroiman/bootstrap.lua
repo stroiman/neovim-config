@@ -17,3 +17,13 @@ vim.cmd [[packadd catppuccin]]
 
 require ("stroiman.telescope")
 require ("stroiman.fugitive")
+
+vim.cmd.packadd("vim-tmux-navigator")
+
+
+vim.keymap.set("n", "-", function()
+  local file = vim.fn.expand("%:t")
+  vim.cmd.e("%:p:h")
+  vim.fn.search(file .. "$")
+  -- vim.fn.search("[^\\W]" .. file .. "$")
+end)
