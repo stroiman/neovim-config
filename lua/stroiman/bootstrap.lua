@@ -16,3 +16,4 @@ vim.cmd [[packadd vim-fugitive]]
 vim.cmd [[packadd gitsigns]]
 vim.cmd [[packadd catppuccin]]
 
+require ("stroiman.telescope")
