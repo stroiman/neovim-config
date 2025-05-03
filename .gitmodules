@@ -4,3 +4,6 @@
 [submodule "pack/vendor/opt/gitsigns"]
 	path = pack/vendor/opt/gitsigns
 	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "pack/vendor/opt/catppuccin"]
+	path = pack/vendor/opt/catppuccin
+	url = https://github.com/catppuccin/nvim
