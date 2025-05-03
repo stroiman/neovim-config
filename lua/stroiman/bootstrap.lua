@@ -1,8 +1,18 @@
+local M = {}
+
+M.install_plugin = function (path, name)
+  local pluginpath = vim.fn.stdpath("config") .. "/pack/vendor/opt/" .. name
+  local source = "https://github.com/" .. path
+  if not (vim.uv or vim.loop).fs_stat(pluginpath) then
+    vim.fn.system({
+      "git", "submodule", "add",
+      source,
+      pluginpath,
+    })
+  end
+end
 
 vim.cmd [[packadd vim-fugitive]]
 vim.cmd [[packadd gitsigns]]
-
-M.install_plugin("catppuccin/nvim", "catppuccin")
-
 vim.cmd [[packadd catppuccin]]
 
