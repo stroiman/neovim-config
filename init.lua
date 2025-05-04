@@ -23,6 +23,14 @@ end
 
 vim.go.swapfile = false
 
+local load_init_file = function()
+  if vim.fn.getcwd() == vim.fn.stdpath("config") then
+    vim.cmd("e $MYVIMRC")
+  else
+    vim.cmd([[tabnew +tcd\ %:p:h $MYVIMRC]])
+  end
+end
+
 local function reload()
   for name, _ in pairs(package.loaded) do
     if name:match("^stroiman") then
@@ -36,7 +44,7 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.keymap.set("n", "<leader>ve", ":tabnew $MYVIMRC<cr>", { desc = "Open neovim configuration file" })
+vim.keymap.set("n", "<leader>ve", load_init_file, { desc = "Open neovim configuration file" })
 vim.keymap.set("n", "<leader>vs", reload, { desc = "Re-source neovim configuration file" })
 vim.keymap.set("n", "<leader>vx", ":w<cr>:so %<cr>", { desc = "Save and execute current file" })
 vim.keymap.set("i", "jk", "<esc>")
