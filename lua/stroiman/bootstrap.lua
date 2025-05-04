@@ -10,6 +10,7 @@ require("stroiman.help")
 require("stroiman.treesitter")
 require("stroiman.cmp")
 require("stroiman.harpoon")
+require("stroiman.luasnip")
 
 vim.cmd.packadd("vim-tmux-navigator")
 

@@ -9,3 +9,5 @@ local install_plugin = function(path, name)
     })
   end
 end
+
+-- install_plugin("L3MON4D3/LuaSnip", "luasnip")

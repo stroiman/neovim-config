@@ -58,3 +58,6 @@
 [submodule "pack/vendor/opt/harpoon"]
 	path = pack/vendor/opt/harpoon
 	url = https://github.com/cosmicboots/harpoon
+[submodule "pack/vendor/opt/luasnip"]
+	path = pack/vendor/opt/luasnip
+	url = https://github.com/L3MON4D3/LuaSnip
