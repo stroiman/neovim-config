@@ -30,6 +30,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
         border = "rounded",
       })
     end)
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = buf,
+      group = group,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
+})
+
+vim.api.nvim_create_autocmd("LspDetach", {
+  group = group,
+  callback = function(event)
+    vim.api.nvim_clear_autocmds({
+      buffer = event.buf,
+      group = group,
+    })
   end
 })
 
