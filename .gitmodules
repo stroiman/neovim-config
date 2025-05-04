@@ -34,3 +34,24 @@
 [submodule "pack/vendor/opt/todo-comments.nvim"]
 	path = pack/vendor/opt/todo-comments
 	url = https://github.com/folke/todo-comments.nvim
+[submodule "pack/vendor/opt/cmp-nvim-lsp"]
+	path = pack/vendor/opt/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "pack/vendor/opt/cmp-buffer"]
+	path = pack/vendor/opt/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer
+[submodule "pack/vendor/opt/cmp-path"]
+	path = pack/vendor/opt/cmp-path
+	url = https://github.com/hrsh7th/cmp-path
+[submodule "pack/vendor/opt/cmp-cmdline"]
+	path = pack/vendor/opt/cmp-cmdline
+	url = https://github.com/hrsh7th/cmp-cmdline
+[submodule "pack/vendor/opt/cmp_luasnip"]
+	path = pack/vendor/opt/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip
+[submodule "pack/vendor/opt/lspkind-nvim"]
+	path = pack/vendor/opt/lspkind-nvim
+	url = https://github.com/onsails/lspkind-nvim
+[submodule "pack/vendor/opt/nvim-cmp"]
+	path = pack/vendor/opt/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
