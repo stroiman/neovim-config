@@ -55,3 +55,6 @@
 [submodule "pack/vendor/opt/nvim-cmp"]
 	path = pack/vendor/opt/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "pack/vendor/opt/harpoon"]
+	path = pack/vendor/opt/harpoon
+	url = https://github.com/cosmicboots/harpoon

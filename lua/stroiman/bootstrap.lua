@@ -22,6 +22,7 @@ require("stroiman.lsp-config")
 require("stroiman.help")
 require("stroiman.treesitter")
 require("stroiman.cmp")
+require("stroiman.harpoon")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
