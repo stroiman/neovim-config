@@ -34,3 +34,8 @@ end)
 
 vim.cmd.packadd("comment")
 require("Comment").setup()
+
+-- TODO: Fix
+vim.cmd.packadd("todo-comments")
+require("todo-comments").setup({})
+vim.keymap.set("n", "<leader>ft", ":TodoTelescope<cr>")

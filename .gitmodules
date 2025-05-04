@@ -31,3 +31,6 @@
 [submodule "pack/vendor/opt/Comment.nvim"]
 	path = pack/vendor/opt/comment
 	url = https://github.com/numToStr/Comment.nvim
+[submodule "pack/vendor/opt/todo-comments.nvim"]
+	path = pack/vendor/opt/todo-comments
+	url = https://github.com/folke/todo-comments.nvim
