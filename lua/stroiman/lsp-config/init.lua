@@ -5,8 +5,8 @@ local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true }
 vim.api.nvim_create_autocmd("LspAttach", {
   group = group,
   callback = function(event)
-    -- local client_id = event.data.client_id
-    -- local client = vim.lsp.get_client_by_id(client_id)
+    local client_id = event.data.client_id
+    local client = vim.lsp.get_client_by_id(client_id)
     local buf = event.buf
 
     local map = function(keys, func, desc)
@@ -29,6 +29,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end)
     map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
     map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+
+    ---@diagnostic disable-next-line: need-check-nil
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = false })
+    end
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = buf,
@@ -67,3 +72,4 @@ vim.diagnostic.config({
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('gopls')
+vim.lsp.enable('csharp_ls')

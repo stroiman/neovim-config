@@ -21,6 +21,7 @@ require("stroiman.fugitive")
 require("stroiman.lsp-config")
 require("stroiman.help")
 require("stroiman.treesitter")
+require("stroiman.cmp")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
@@ -35,7 +36,6 @@ end)
 vim.cmd.packadd("comment")
 require("Comment").setup()
 
--- TODO: Fix
 vim.cmd.packadd("todo-comments")
 require("todo-comments").setup({})
 vim.keymap.set("n", "<leader>ft", ":TodoTelescope<cr>")
