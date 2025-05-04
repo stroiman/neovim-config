@@ -31,3 +31,6 @@ vim.keymap.set("n", "-", function()
   vim.fn.search(file .. "$")
   -- vim.fn.search("[^\\W]" .. file .. "$")
 end)
+
+vim.cmd.packadd("comment")
+require("Comment").setup()

@@ -28,3 +28,6 @@
 [submodule "pack/vendor/opt/nvim-treesitter"]
 	path = pack/vendor/opt/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "pack/vendor/opt/Comment.nvim"]
+	path = pack/vendor/opt/comment
+	url = https://github.com/numToStr/Comment.nvim
