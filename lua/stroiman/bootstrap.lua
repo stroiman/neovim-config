@@ -20,6 +20,7 @@ require("stroiman.telescope")
 require("stroiman.fugitive")
 require("stroiman.lsp-config")
 require("stroiman.help")
+require("stroiman.treesitter")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
