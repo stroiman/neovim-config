@@ -17,6 +17,7 @@ vim.cmd [[packadd catppuccin]]
 
 require ("stroiman.telescope")
 require ("stroiman.fugitive")
+require ("stroiman.lsp-config")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
