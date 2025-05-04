@@ -61,3 +61,6 @@
 [submodule "pack/vendor/opt/luasnip"]
 	path = pack/vendor/opt/luasnip
 	url = https://github.com/L3MON4D3/LuaSnip
+[submodule "pack/stroiman/opt/gotest.nvim"]
+	path = pack/stroiman/opt/gotest
+	url = git@github.com:stroiman/gotest.nvim
