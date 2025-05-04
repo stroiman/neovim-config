@@ -64,3 +64,6 @@
 [submodule "pack/stroiman/opt/gotest.nvim"]
 	path = pack/stroiman/opt/gotest
 	url = git@github.com:stroiman/gotest.nvim
+[submodule "pack/vendor/opt/lualine"]
+	path = pack/vendor/opt/lualine
+	url = https://github.com/vim-projectionist
