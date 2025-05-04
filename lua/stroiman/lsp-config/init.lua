@@ -27,6 +27,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         border = "rounded",
       })
     end)
+    map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
+    map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = buf,
