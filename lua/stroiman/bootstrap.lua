@@ -15,6 +15,7 @@ end
 vim.cmd [[packadd gitsigns]]
 vim.cmd [[packadd catppuccin]]
 
+require("stroiman.mason")
 require("stroiman.telescope")
 require("stroiman.fugitive")
 require("stroiman.lsp-config")

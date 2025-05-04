@@ -1,7 +1,4 @@
 vim.cmd.packadd("nvim-lspconfig")
-vim.cmd.packadd("mason")
-
-require("mason").setup({})
 
 local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true })
 
