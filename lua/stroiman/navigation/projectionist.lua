@@ -3,13 +3,16 @@ plugins.load("vim-projectionist")
 
 local M = {}
 
-M.add_projection = function(key, value)
+--- Create a new projectionist project. See https://github.com/tpope/vim-projectionist
+--- @param key string A pattern of files or directories to match for the projection
+--- @param config any The projection configuration.
+M.add_projection = function(key, config)
   local projections = vim.g.projectionist_heuristics
   if not projections then
     projections = {}
   end
 
-  projections[key] = value
+  projections[key] = config
   vim.g.projectionist_heuristics = projections
 end
 

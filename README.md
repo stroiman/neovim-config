@@ -4,6 +4,9 @@ This is my re-sourcable, plugin-manager free neovim configuration
 
 ## Installation
 
+**Requirements:** This configuration requires neovim 0.11 - so be sure to update
+if you haven't allready.
+
 Git clone this to `$HOME/.config.nvim` and run the default make target in the
 root. Alternatively, clone to another folder in `$HOME/.config`; see below.
 

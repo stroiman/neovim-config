@@ -7,19 +7,17 @@ plugins.load("catppuccin")
 
 require("stroiman.navigation")
 
-require("stroiman.mason")
 require("stroiman.fugitive")
-require("stroiman.lsp-config")
+require("stroiman.lsp")
 require("stroiman.help")
 require("stroiman.treesitter")
 require("stroiman.cmp")
 require("stroiman.harpoon")
 require("stroiman.luasnip")
-require("stroiman.languages.go")
+require("stroiman.languages")
 require("stroiman.lualine")
 
 vim.cmd.packadd("vim-tmux-navigator")
-
 
 vim.cmd.packadd("comment")
 require("Comment").setup()

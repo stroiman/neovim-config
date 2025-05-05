@@ -1,6 +1,3 @@
-local plugins = require("stroiman.plugins")
-plugins.load("nvim-lspconfig")
-
 local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {

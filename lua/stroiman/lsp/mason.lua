@@ -4,9 +4,11 @@ plugins.load("mason")
 require("mason").setup({})
 local registry = require("mason-registry")
 
+local M = {}
 
+--- Instruct mason to install one or more tools.
 --- @param pkg string | string[]
-local function ensure_installed(pkg)
+M.ensure_installed = function(pkg)
   local arg_type = type(pkg)
   if arg_type == "string" and not registry.is_installed(pkg) then
     print("Installing", pkg)
@@ -14,16 +16,13 @@ local function ensure_installed(pkg)
   end
   if arg_type == "table" then
     for _, name in ipairs(pkg) do
-      ensure_installed(name)
+      M.ensure_installed(name)
     end
   end
 end
 
-ensure_installed {
-  "gopls",
-  "goimports",
-  "golines",
-}
-ensure_installed("lua-language-server")
-ensure_installed("typescript-language-server")
-ensure_installed("stylua")
+M.ensure_installed("lua-language-server")
+M.ensure_installed("typescript-language-server")
+M.ensure_installed("stylua")
+
+return M
