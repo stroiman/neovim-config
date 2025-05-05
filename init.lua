@@ -1,11 +1,20 @@
--- Set the default options.
+-- init.lua
+--
+-- Most of the configuration is moduralised into separate files. 
+--
+-- This file contains essential configuration for working with the configuration
+-- itself; so I have essential keyboard shortcuts available if an error occurs
+-- during loading the remaining modules.
+--
+
+--     === DEFAULT GLOBAL OPTIONS ===
 --
 -- To avoid changing local options when re-sourcing, only global options are
--- modified. But when a file or filder is passed to the command line executable,
--- the buffer is created _before_ the init file is sourced. For that reason the
--- options are applied to local and global options on startup, but only global
--- options on subsequent runs.
-
+-- modified when re-sourcing the configuration.
+--
+-- But the initial buffer is created _before_ the vim configuration is executed;
+-- but loaded later. For that reason these are also applied to local options on
+-- the first run; in addition to global options.
 local function set_options(opt)
   opt.expandtab = true
   opt.tabstop = 2
@@ -69,9 +78,21 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- === Working with vim configuration ===
+--
+-- Setup essential keyboard shortcuts to open the configuration in a new tab,
+-- setting the local directory in the tab, resourcing changes, executing a
+-- single config file.
 vim.keymap.set("n", "<leader>ve", load_init_file, { desc = "Open neovim configuration file" })
 vim.keymap.set("n", "<leader>vs", reload, { desc = "Re-source neovim configuration file" })
 vim.keymap.set("n", "<leader>vx", ":w<cr>:so %<cr>", { desc = "Save and execute current file" })
+
+-- Quick-exit of insert mode.
+-- The letter combination "jk" is not used in any word; and they reside just
+-- under the first/index and second finger on the right hand; being an
+-- incredibly quick keyboard combination to type.
+-- Tip: Map <esc> to <nop> to help unlearn using <esc>
 vim.keymap.set("i", "jk", "<esc>")
 
 -- It's a habit to use Ctrl+S to save. Caps-Lock is mapped as a control key,
@@ -79,11 +100,11 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save current file" })
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 
--- Ctrl-A increments a number. It's a useless function that conflicts with my
--- TMUX prefix command, resulting in frequent accidental presses that have
--- historically been the source of bugs. Map it to <nop> to make it not do
--- anything. Ctrl-X descrements. Equally useless, though not a historic source
--- of bugs.
+-- === Remove useless keyboard shortcuts ===
+--
+-- <C-a>/<C-x> increment/decrement a number. They are useless functions, and in
+-- particularly <C-a> is also my tmux prefix; which has historically
+-- unintentionally incremented a number in code, causing bugs.
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
 
