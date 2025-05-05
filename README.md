@@ -4,7 +4,8 @@ This is my re-sourcable, plugin-manager free neovim configuration
 
 ## Installation
 
-Run the default make target in the root.
+Git clone this to `$HOME/.config.nvim` and run the default make target in the
+root. Alternatively, clone to another folder in `$HOME/.config`; see below.
 
 ```sh
 > make
@@ -14,6 +15,26 @@ The make task will
 
 - Fetch plugins that exist as git submodules
 - Execute custom build steps for luasnip.
+
+### Non-default configuration folder
+
+By default, neovim will load the configuration from the folder, `nvim/` inside
+`$HOME/.config`. The default can be overridden using the `NVIM_APPNAME`
+environment variable.
+
+```sh
+> git clone https://github.com/stroiman/neovim-config $HOME/.config/nvim-stroiman
+> cd $HOME/.config/nvim-stroiman
+> make
+> NVIM_APPNAME=nvim-stroiman nvim
+```
+
+You can create an alias for the last command
+
+```sh
+> alias nvs="NVIM_APPNAME=nvim-stroiman nvim"
+> nvs .
+```
 
 ## Philosophy
 
@@ -34,4 +55,7 @@ work against my purpose. Loading plugins isn't really a difficult task. Plugins
 are added as git submodules to this repository, so I have no need for a
 lock-file to recreate a known state.
 
+## Check out the code
 
+There's some documentation in `init.lua` describing the reasoning behind the
+choices. I will extend as I get more time.
