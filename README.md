@@ -36,6 +36,10 @@ You can create an alias for the last command
 > nvs .
 ```
 
+This is also used for other relevant stdpath directories, like cache, and data;
+so ephemeral data cached by plugins will also be kept separate. See also `:help
+stdpath`.
+
 ## Philosophy
 
 A vim configuration is a dynamic beast that often mutates over a long period of
