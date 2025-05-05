@@ -21,8 +21,6 @@ if not vim.g.stroiman_loaded then
   vim.g.stroiman_loaded = true
 end
 
-vim.go.swapfile = false
-
 local load_init_file = function()
   if vim.fn.getcwd() == vim.fn.stdpath("config") then
     vim.cmd("e $MYVIMRC")
