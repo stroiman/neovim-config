@@ -13,6 +13,7 @@ require("stroiman.harpoon")
 require("stroiman.luasnip")
 require("stroiman.languages.go")
 require("stroiman.lualine")
+require("stroiman.projectionist")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
