@@ -67,3 +67,6 @@
 [submodule "pack/vendor/opt/lualine"]
 	path = pack/vendor/opt/lualine
 	url = https://github.com/vim-projectionist
+[submodule "pack/vendor/opt/vim-projectionist"]
+	path = pack/vendor/opt/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist
