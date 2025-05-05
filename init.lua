@@ -1,13 +1,13 @@
 -- init.lua
 --
--- Most of the configuration is moduralised into separate files. 
+-- Most of the configuration is moduralised into separate files.
 --
 -- This file contains essential configuration for working with the configuration
 -- itself; so I have essential keyboard shortcuts available if an error occurs
 -- during loading the remaining modules.
 --
 
---     === DEFAULT GLOBAL OPTIONS ===
+--      === DEFAULT GLOBAL OPTIONS ===
 --
 -- To avoid changing local options when re-sourcing, only global options are
 -- modified when re-sourcing the configuration.
@@ -16,16 +16,28 @@
 -- but loaded later. For that reason these are also applied to local options on
 -- the first run; in addition to global options.
 local function set_options(opt)
-  opt.expandtab = true
+  opt.expandtab = true -- Spaces not tabs.
   opt.tabstop = 2
   opt.shiftwidth = 2
   opt.softtabstop = 2
+  opt.textwidth = 80 -- good sensible default permitting more vsplits.
+
+  -- Searching is case insensitive, excep when the search term has mixed case.
   opt.ignorecase = true
   opt.smartcase = true
-  opt.relativenumber = true
+
+  -- Show line numbers, with relative numbers.
+  -- Relative numbers often allows quicker navigation, as you can quickly check
+  -- how many lines up or down you need to go to get to the desired line; which
+  -- is almost always less numbers to type than the full line number.
   opt.number = true
+  opt.relativenumber = true
+
+  -- Always make room for a sign column, so things don't shift around
   opt.signcolumn = "yes"
-  opt.textwidth = 80
+
+  opt.splitright = true  -- Open new vertical split to the right
+  opt.splitbelow = false -- Open new horizontal split below
 end
 
 set_options(vim.go)
@@ -35,11 +47,6 @@ if not vim.g.stroiman_loaded then
   vim.g.stroiman_loaded = true
 end
 
--- Default netrw settings. Hide the banner. Hide .git files, and remove default
--- behaviour to place C header files in front of other files.
-vim.g.netrw_banner = 0
-vim.g.netrw_list_hide = [[^\.git\/$]]
-vim.g.netrw_sort_sequence = [[\/$]]
 
 --- Open the init file. If opened from a project, open in a new tab, and set the
 --- working directory for the tab. If opened from within a file in the
@@ -79,7 +86,7 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- === Working with vim configuration ===
+--      === Working with vim configuration ===
 --
 -- Setup essential keyboard shortcuts to open the configuration in a new tab,
 -- setting the local directory in the tab, resourcing changes, executing a
@@ -88,19 +95,24 @@ vim.keymap.set("n", "<leader>ve", load_init_file, { desc = "Open neovim configur
 vim.keymap.set("n", "<leader>vs", reload, { desc = "Re-source neovim configuration file" })
 vim.keymap.set("n", "<leader>vx", ":w<cr>:so %<cr>", { desc = "Save and execute current file" })
 
--- Quick-exit of insert mode.
+--      === Quick-exit of insert mode. ===
+--
 -- The letter combination "jk" is not used in any word; and they reside just
 -- under the first/index and second finger on the right hand; being an
 -- incredibly quick keyboard combination to type.
--- Tip: Map <esc> to <nop> to help unlearn using <esc>
+-- In 15 years, the only time I have typed that combination is when describing
+-- my vim configuration.
 vim.keymap.set("i", "jk", "<esc>")
+-- Tip: To help adopt this pattern, map <esc> to <nop> to help unlearn <esc>
 
 -- It's a habit to use Ctrl+S to save. Caps-Lock is mapped as a control key,
 -- making this an easily accessible shortcut.
+-- I want this to work in both normal, and insert mode - where I want to return
+-- to normal mode on save.
 vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save current file" })
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 
--- === Remove useless keyboard shortcuts ===
+--      === Remove useless keyboard shortcuts ===
 --
 -- <C-a>/<C-x> increment/decrement a number. They are useless functions, and in
 -- particularly <C-a> is also my tmux prefix; which has historically

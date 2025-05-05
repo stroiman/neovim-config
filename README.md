@@ -16,6 +16,9 @@ The make task will
 - Fetch plugins that exist as git submodules
 - Execute custom build steps for luasnip.
 
+Launch neovim, and run `:checkhealth` to check if there are other tools you
+might want to install, like `ripgrep` or `fd`.
+
 ### Non-default configuration folder
 
 By default, neovim will load the configuration from the folder, `nvim/` inside

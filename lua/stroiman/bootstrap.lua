@@ -5,8 +5,9 @@ plugins.load("plenary")
 plugins.load("gitsigns")
 plugins.load("catppuccin")
 
+require("stroiman.navigation")
+
 require("stroiman.mason")
-require("stroiman.telescope")
 require("stroiman.fugitive")
 require("stroiman.lsp-config")
 require("stroiman.help")
