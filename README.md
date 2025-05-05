@@ -19,8 +19,12 @@ The make task will
 - Fetch plugins that exist as git submodules
 - Execute custom build steps for luasnip.
 
-Launch neovim, and run `:checkhealth` to check if there are other tools you
-might want to install, like `ripgrep` or `fd`.
+Launch neovim, and run 
+- `:checkhealth` to check if there are other tools you might want to install,
+  like `ripgrep` or `fd`.
+- `:helptags` to generate helptags for all the plugins that were loaded.
+
+Note, on first startup, LSPs will be installed by Mason.
 
 ### Non-default configuration folder
 
@@ -79,6 +83,37 @@ Navigation uses
   finding for virtually everything
 - [vim-projectionist](https://github.com/tpope/vim-projectionist) allows
   describing semantic relationships between files
+- Settings inspired by [vim-vinegar](), e.g., mapping `-` to open the directory,
+  showing the current file in netrw. In netrw itself, `-` navigates to parent
+  directory; so this just acts as an "up" command.
+
+### LSP
+
+- [nvim-lspconfig] Provides default configuration for most LSPs. Some
+  customization may be necessary.
+- [Mason] Helps install LSPs and other tools, such as linters and formatters. 
+
+[nvim-lspconfig]: https://github.com/tpope/vim-projectionist
+[Mason]: https://github.com/williamboman/mason.nvim
+
+`nvim-lspconfig` creates the necessary configuration for most LSPs to enable
+attaching the right LSP to the buffer. But it doesn't do much more, just set up
+a few idiomatic keyboard maps, e.g. `K` which is used for showing documentation,
+is mapped to show code documentation for the symbol under the cursor; unless
+a map already exist.
+
+> [!Note] Many tutorials include mason-lspconfig, which helps build a bridge
+> from mason to lspconfig. At the time of writing this, mason-lspconfig is not
+> updated to new neovim 0.11 functionality, and it's documentation suggests
+> using a method from lspconfig which is no longer supported. That's why it's
+> not present in this configuration.
+
+#### Custom LSP configuration
+
+A new feature of neovim 0.11 is to search for configurations in the `lsp/`
+folder, merging any configuration found here with other configurations.
+
+This contains a lua configuration that will find neovim runtime files
 
 ## Select plugin description
 
