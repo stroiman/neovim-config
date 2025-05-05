@@ -1,4 +1,5 @@
-vim.cmd.packadd("nvim-lspconfig")
+local plugins = require("stroiman.plugins")
+plugins.load("nvim-lspconfig")
 
 local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true })
 

@@ -1,10 +1,13 @@
-vim.cmd.packadd("nvim-lspconfig")
-vim.cmd.packadd("cmp-nvim-lsp")
-vim.cmd.packadd("cmp-buffer")
-vim.cmd.packadd("cmp-path")
-vim.cmd.packadd("cmp-cmdline")
-vim.cmd.packadd("cmp_luasnip")
-vim.cmd.packadd("lspkind-nvim")
+local plugins = require("stroiman.plugins")
+plugins.load({
+  "nvim-lspconfig",
+  "cmp-nvim-lsp",
+  "cmp-buffer",
+  "cmp-path",
+  "cmp-cmdline",
+  "cmp_luasnip",
+  "lspkind-nvim",
+})
 
 vim.cmd.packadd("nvim-cmp")
 

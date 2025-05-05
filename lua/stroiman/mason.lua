@@ -1,4 +1,5 @@
-vim.cmd.packadd("mason")
+local plugins = require("stroiman.plugins")
+plugins.load("mason")
 
 require("mason").setup({})
 local registry = require("mason-registry")

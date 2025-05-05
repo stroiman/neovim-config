@@ -6,8 +6,39 @@ local lua_projections = {
   ["lua/stroiman/*.lua"] = { type = "src" },
 }
 
-vim.g.projectionist_heuristics = {
-  ['init.lua'] = lua_projections,
+local go_projections = {
+  ["*.go"] = {
+    command = "src",
+    alternate = {
+      "{}_test.go",
+    },
+  },
+  ["*_test.go"] = {
+    command = "test",
+    alternate = {
+      "{}.go",
+      "{}.h",
+    },
+  },
+  ["*.h"] = {
+    command = "h",
+    alternate = {
+      "{}.cc",
+    },
+  },
+  ["*.cc"] = {
+    command = "cc",
+    alternate = {
+      "{}.h",
+      "{}.go",
+    },
+  },
 }
 
-vim.cmd.packadd("vim-projectionist")
+vim.g.projectionist_heuristics = {
+  ["init.lua"] = lua_projections,
+  ["go.mod"] = go_projections,
+}
+
+local plugins = require("stroiman.plugins")
+plugins.load("vim-projectionist")

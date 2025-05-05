@@ -1,4 +1,5 @@
-vim.cmd.packadd("lualine")
+local plugins = require("stroiman.plugins")
+plugins.load("lualine")
 
 local gotest_loaded, gotest = pcall(require, "gotest")
 
@@ -24,5 +25,3 @@ if gotest_loaded then
 end
 
 require("lualine").setup(opts)
-
-

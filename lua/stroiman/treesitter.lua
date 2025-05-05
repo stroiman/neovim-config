@@ -1,4 +1,5 @@
-vim.cmd.packadd("nvim-treesitter")
+local plugins = require("stroiman.plugins")
+plugins.load("nvim-treesitter")
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)

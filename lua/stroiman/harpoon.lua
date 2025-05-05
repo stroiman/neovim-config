@@ -1,4 +1,6 @@
-vim.cmd.packadd("harpoon")
+local plugins = require("stroiman.plugins")
+plugins.load("harpoon")
+
 local harpoon = require("harpoon")
 
 harpoon:setup()

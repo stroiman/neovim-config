@@ -1,4 +1,5 @@
-vim.cmd.packadd("luasnip")
+local plugins = require("stroiman.plugins")
+plugins.load("luasnip")
 
 local ls = require("luasnip")
 local types = require("luasnip.util.types")

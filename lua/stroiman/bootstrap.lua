@@ -1,7 +1,10 @@
-vim.cmd [[packadd gitsigns]]
-vim.cmd [[packadd catppuccin]]
+local plugins = require("stroiman.plugins")
 
-require("stroiman.plugins")
+plugins.load("plenary")
+
+plugins.load("gitsigns")
+plugins.load("catppuccin")
+
 require("stroiman.mason")
 require("stroiman.telescope")
 require("stroiman.fugitive")

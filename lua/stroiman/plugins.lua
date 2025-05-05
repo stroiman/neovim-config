@@ -1,3 +1,5 @@
+local M = {}
+
 local install_plugin = function(path, name)
   local pluginpath = vim.fn.stdpath("config") .. "/pack/vendor/opt/" .. name
   local source = "https://github.com/" .. path
@@ -14,7 +16,7 @@ end
 local function get_folder_name(plugin)
   local paths = vim.fn.split(plugin, "/")
   if #paths ~= 2 then
-    print("Expected a string in the form user/repository")
+    print("Expected a string in the form 'user/repository'")
     return nil
   end
   local path = paths[#paths]
@@ -30,3 +32,26 @@ vim.api.nvim_create_user_command("PlugInstall", function(cmd_args)
 end, {
   nargs = 1,
 })
+
+--- @param plugin_name string | string[]
+M.load = function(plugin_name)
+  if type(plugin_name) == "table" then
+    for _, name in ipairs(plugin_name) do
+      M.load(name)
+    end
+    return
+  end
+  local plugins = vim.g.stroiman_plugins_loaded
+
+  if not plugins then
+    plugins = {}
+  end
+  local plugin = plugins[plugin_name]
+  if not plugin then
+    vim.cmd.packadd(plugin_name)
+    plugins[plugin_name] = { loaded = true }
+  end
+  vim.g.stroiman_plugins_loaded = plugins
+end
+
+return M

@@ -1,5 +1,5 @@
-vim.cmd.packadd("plenary")
-vim.cmd.packadd("telescope")
+local plugins = require("stroiman.plugins")
+plugins.load("telescope")
 
 local builtin = require('telescope.builtin')
 local telescope = require('telescope')
@@ -11,7 +11,7 @@ end
 
 telescope.setup({
   defaults = {
-    file_ignore_patterns = { 
+    file_ignore_patterns = {
       "^pack/vendor/start/",
       "^pack/vendor/opt/",
     },
