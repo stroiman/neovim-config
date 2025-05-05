@@ -17,17 +17,9 @@ require("stroiman.harpoon")
 require("stroiman.luasnip")
 require("stroiman.languages.go")
 require("stroiman.lualine")
-require("stroiman.projectionist")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
-
-vim.keymap.set("n", "-", function()
-  local file = vim.fn.expand("%:t")
-  vim.cmd.e("%:p:h")
-  vim.fn.search(file .. "$")
-  -- vim.fn.search("[^\\W]" .. file .. "$")
-end)
 
 vim.cmd.packadd("comment")
 require("Comment").setup()

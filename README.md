@@ -62,7 +62,38 @@ work against my purpose. Loading plugins isn't really a difficult task. Plugins
 are added as git submodules to this repository, so I have no need for a
 lock-file to recreate a known state.
 
-## Check out the code
+## Configuration
 
 There's some documentation in `init.lua` describing the reasoning behind the
 choices. I will extend as I get more time.
+
+### Navigation
+
+Navigation uses 
+
+- netrw, vim's build in file managers. See `:help netrw`
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim) provides fuzzy
+  finding for virtually everything
+- [vim-projectionist](https://github.com/tpope/vim-projectionist) allows
+  describing semantic relationships between files
+
+## Select plugin description
+
+Some plugins deserve a little more explaining
+
+### Projectioninst
+
+This old gem seems to be overlooked by modern neovimmers. The plugin requires a
+bit of custom configuration; sometimes on a project basis. But it provides quick
+navigation between related files, either in the same window, or new split,
+vsplit, or tab.
+
+Some example use cases:
+
+  - Navigate between test and implementation file
+  - Navigate between `.cc` and `.h` file
+  - Navigate between different languages in translation files.
+
+The navigation can be as simple as just navigate to alternate file, `:A`, or
+navigate to a specific related file. E.g., for translations use `:Een` to open
+the English translation file, `:Ede` to open the German translation file, etc.
