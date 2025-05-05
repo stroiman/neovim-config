@@ -1,3 +1,11 @@
+-- Set the default options.
+--
+-- To avoid changing local options when re-sourcing, only global options are
+-- modified. But when a file or filder is passed to the command line executable,
+-- the buffer is created _before_ the init file is sourced. For that reason the
+-- options are applied to local and global options on startup, but only global
+-- options on subsequent runs.
+
 local function set_options(opt)
   opt.expandtab = true
   opt.tabstop = 2
@@ -8,18 +16,19 @@ local function set_options(opt)
   opt.relativenumber = true
   opt.number = true
   opt.signcolumn = "yes"
+  opt.textwidth = 80
 end
 
 set_options(vim.go)
-
-vim.g.netrw_banner = 0
-vim.g.netrw_list_hide = [[^\.git\/$]]
-vim.g.netrw_sort_sequence = [[\/$]]
 
 if not vim.g.stroiman_loaded then
   set_options(vim.opt)
   vim.g.stroiman_loaded = true
 end
+
+vim.g.netrw_banner = 0
+vim.g.netrw_list_hide = [[^\.git\/$]]
+vim.g.netrw_sort_sequence = [[\/$]]
 
 local load_init_file = function()
   if vim.fn.getcwd() == vim.fn.stdpath("config") then
