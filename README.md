@@ -78,6 +78,13 @@ choices. I will extend as I get more time.
 
 ### Navigation
 
+I don't have a fancy filetree plugin. I used to have neotree but a bug caused it
+to hijack netrw, and I removed it. It was never a help in navigating code; but
+very useful when explaining things to a colleage. It provides a better visual
+context that a path in a stataus line does.
+
+My navigation relies on these plugins.
+
 - netrw, vim's build in file managers. See `:help netrw`
 - [Telescope] provides fuzzy finding for virtually everything
 - [vim-projectionist] allows describing semantic relationships between files
@@ -86,14 +93,16 @@ choices. I will extend as I get more time.
   showing the current file in netrw. In netrw itself, `-` navigates to parent
   directory; so this just acts as an "up" command.
 
-Note: The version of harpoon used is a fork of the [original version by the
-primeagen](https://github.com/ThePrimeagen/harpoon). The original version has
+
+
+Note: The version of harpoon used is a fork of the [original harpoon](https://github.com/ThePrimeagen/harpoon) by [The Primeagen]. The original version has
 issues when using multiple working folders.
 
 [Telescope]: https://github.com/nvim-telescope/telescope.nvim
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
 [harpoon]: https://github.com/cosmicboots/harpoon
+[The Primeagen]: https://www.youtube.com/c/theprimeagen
 
 ### Working with git
 
@@ -233,6 +242,14 @@ default mappings (I included `<C-q>` as I use it heavily)
 | `<C-q>`      | (Default telescope map) Crate a quicklist with current results       |
 | `-`          | Navigate to "parent" directory from a file (default netrw behaviour) |
 
+### Misc
+
+| Map                 | Description                                                             |
++---------------------|-------------------------------------------------------------------------+
+| **Paste in visual** |                                                                         |
+| `p` (visual)        | _paste_ and keep the yank buffer (i've just reversed `p`/`P` behaviour) |
+| `P` (visual)        | _paste_ and replace the yank buffer with the removed content            |
+
 ## Implementation details
 
 ### Plugin management
@@ -277,6 +294,10 @@ over many, many years.
   configures neovim from scratch. His resources were the trigger for me to stop
   using the training wheels (lsp-zero) and configure the tools myself (today,
   I'd say LSP configuration is so easy that training wheels are hardly required)
+- [The Primeagen]'s [Neovim RC From Scratch] - Credit must go where credit is
+  due. This kickstarted my first lua-based configuration; after having used
+  vimscript configuration for neovim. But most that is taught here is better
+  accomplished in other ways. But I still have the `p`->`P` map.
 
 [Vimcasts]: http://vimcasts.org/
 [Drew Neil]: http://drewneil.com/

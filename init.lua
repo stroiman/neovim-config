@@ -126,6 +126,12 @@ vim.keymap.set("n", "<C-x>", "<nop>")
 -- when I want to type 'gq'. It's pain to exit.
 vim.keymap.set("n", "gQ", "<nop>")
 
+-- In visual mode, `p` overwrites the selected text, and replaces the yank
+-- buffer with the removed text. I want to keep the buffer, which is what `P`
+-- does by default. So just switch the two keymaps.
+vim.keymap.set("v", "p", "P")
+vim.keymap.set("v", "P", "p")
+
 require("stroiman.bootstrap")
 
 vim.cmd.colorscheme("catppuccin")
