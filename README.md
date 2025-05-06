@@ -145,7 +145,8 @@ keep up to date. But some essential principles are worth mentioning
 
 ### Working with the configuration itself
 
-It's essential that I 
+It's essential that quick editing, and reapplication of the configuration is
+quick and painless.
 
 | Map | Description |
 |-|-|

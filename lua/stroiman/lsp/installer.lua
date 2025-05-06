@@ -10,6 +10,8 @@ local M = {}
 --- Instruct mason to install one or more tools.
 --- @param pkg string | string[]
 M.ensure_installed = function(pkg)
+  -- On a clean installation, registry information is lacking in
+  -- `stdpath("share") .. "/mason"`
   registry.refresh()
   local arg_type = type(pkg)
   if arg_type == "string" and not registry.is_installed(pkg) then

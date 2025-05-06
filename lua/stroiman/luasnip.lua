@@ -50,5 +50,7 @@ vim.keymap.set("n", "<leader>es", function()
   })
 end, { desc = "Edit snippets for current filetype" })
 
+-- "Extend" snippets based on file types, e.g., informing that all snippets configured for
+-- javascript are also applicaable for typescript, etc.
 require("luasnip").filetype_extend("typescript", { "javascript" })
 require("luasnip").filetype_extend("typescriptreact", { "typescript", "javascript", "javascriptreact", "html" })
