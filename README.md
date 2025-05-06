@@ -137,3 +137,53 @@ Some example use cases:
 The navigation can be as simple as just navigate to alternate file, `:A`, or
 navigate to a specific related file. E.g., for translations use `:Een` to open
 the English translation file, `:Ede` to open the German translation file, etc.
+
+## Usage
+
+Don't expect full documentation of everything here, it just takes to long to
+keep up to date. But some essential principles are worth mentioning
+
+### Working with the configuration itself
+
+It's essential that I 
+
+| Map | Description |
+|-|-|
+| `<leader>ve` | **V**im **E**dit. Open `init.lua`. When executed from a project, open a new tab and set the cwd for the tab. If executed from the vim configuration, open in the same window |
+| `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running |
+| `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file) |
+
+
+## Inspiration
+
+Big shoutout goes to all who has served as inspiration for vim configuration
+over many, many years.
+
+- [Vimcasts] by [Drew Neil] - Drew produced a long series of tutorial videos
+  for vim back in the day. Some information may may be less relevant today. But
+  many are just as relevant today as when they were recorder, and few does a
+  better job at explaining core vim concepts.
+- [Learn vimscript the Hard Way] by [Steve Losh] - Like VimCasts this is
+  somewhat dated, but still a valuable source of information about core vim
+  concepts. The series ends with building a plugin. While there may be better
+  sources for plugin development today; the series still introduces you to
+  almost all concepts you need to know about.
+- [TJ DeVries' YouTube Channel] - TJ is a maintainer of neovim, and on his
+  channel he regularly explains advanced setup. But TJ does an extremely good
+  job of explaining things.
+- [Josean Martinez' YouTube Channel] - Josean regularly rebuilds his vim
+  configuration, but his channel includes a lot of other related content for
+  setting up a developer machine, such as TMUX, terminal configuration, window
+  managers.
+- [Typecraft's YouTube Channel] - "Typecraft" also have videos where he
+  configures neovim from scratch. His resources were the trigger for me to stop
+  using the training wheels (lsp-zero) and configure the tools myself (today,
+  I'd say LSP configuration is so easy that training wheels are hardly required)
+
+[Vimcasts]: http://vimcasts.org/
+[Drew Neil]: http://drewneil.com/
+[Learn vimscript the Hard Way]: https://learnvimscriptthehardway.stevelosh.com/
+[Steve Losh]: https://stevelosh.com/
+[TJ DeVries' YouTube Channel]: https://www.youtube.com/@teej_dv
+[Josean Martinez' YouTube Channel]: https://www.youtube.com/@joseanmartinez
+[Typecraft's YouTube Channel]: https://www.youtube.com/@typecraft_dev
