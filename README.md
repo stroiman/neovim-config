@@ -1,6 +1,12 @@
 # Stroiman's neovim config
 
-This is my re-sourcable, plugin-manager free neovim configuration
+This is my re-sourcable, plugin-manager free neovim configuration.
+
+> [!WARNING]
+> This is provided as-is for you to study or use as inspiration; but this is
+> **my** configuration, and I will update it to _my_ needs, change key maps when
+> _I_ want to try something now. So expect changes to behaviour with no prior
+> warning if you continuously pull changes to your own configuration.
 
 ## Installation
 
@@ -87,6 +93,7 @@ Navigation uses
 
 [Telescope]: https://github.com/nvim-telescope/telescope.nvim
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
+[vim-vinegar]: https://github.com/tpope/vim-vinegar
 
 ### LSP
 
@@ -160,6 +167,7 @@ quick and painless.
 | `<leader>ve` | **V**im **E**dit. Open `init.lua`. When executed from a project, open a new tab and set the cwd for the tab. If executed from the vim configuration, open in the same window |
 | `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running                                                                     |
 | `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file)                                                                                                      |
+| `<C-s>`      | **S**ave. Works in both normal and insert mode. In insert mode, you end up in normal mode. (Tip: Remap <kbd>CAPS LOCK</kbd> to <kbd>ctrl</kbd> in your OS)                   |
 
 ### LSP
 
@@ -182,6 +190,7 @@ default mappings (I included `<C-q>` as I use it heavily)
 | `<leader>fg` | **F**ind **G**rep - use ripgrep for fast file content search         |
 | `<leader>ft` | **F**ind **T**odd - find `TODO:` style comments with [todo-comments] |
 | `<C-q>`      | (Default telescope map) Crate a quicklist with current results       |
+| `-`          | Navigate to "parent" directory from a file (default netrw behaviour) |
 
 ## Inspiration
 
