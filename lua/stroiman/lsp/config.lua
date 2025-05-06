@@ -1,6 +1,8 @@
 --[[
           === Setup buffers to have LSP related commands available ===
 
+NOTE: After changing a keymap, reload `:e` to reattach the LSP to the buffer.
+
 Configures keyboard shortcuts to interact with the LSP when editing a file.
 
 This doesn't do a whole lot yet; more will come.
@@ -55,20 +57,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       opts = opts or {}
       local requires = opts.requires
 
-      if requires then
-        if not client:supports_method(requires) then
-          return
-        end
-      end
 
-      local desc = opts.desc
-      if desc ~= nil then
-        desc = "LSP: " .. desc
+      local desc = opts.desc and "LSP: " .. opts.desc
+      local map_opt = { buffer = buf, desc = desc }
+      if requires and not client:supports_method(requires) then
+        vim.keymap.set("n", keys, function() print("LSP: Feature not supported: " .. requires) end, map_opt)
+      else
+        vim.keymap.set("n", keys, func, map_opt)
       end
-      vim.keymap.set("n", keys, func, {
-        buffer = buf,
-        desc = desc
-      })
     end
 
     map("gd", vim.lsp.buf.definition)
@@ -80,13 +76,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end)
     map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
     map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
-    map("<leader>cr", vim.lsp.buf.rename, { 
+    map("<leader>cr", vim.lsp.buf.rename, {
       requires = "textDocument/rename"
     })
     map("<leader>ca", function() vim.lsp.buf.code_action() end, {
       desc = "Code actions",
       requires = "textDocument/codeAction"
     })
+
+    map("<leader>ch", function() -- Code Hint
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, { requires = 'textDocument/inlayHint' })
+
 
     if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = false })

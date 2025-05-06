@@ -224,7 +224,8 @@ quick and painless.
 | Map          | Description                                                |
 +--------------+------------------------------------------------------------+
 | `<leader>ca` | **C**ode **A**ctions                                       |
-| `<leader>ca` | **C**ode **R**ename                                        |
+| `<leader>cr` | **C**ode **R**ename                                        |
+| `<leader>ch` | **C**ode **H**int (toggle on/off)                          |
 | `[d` / `]d`  | Previous/next diagnostics. Shows the diagnostic in a float |
 | `gd`         | **G**oto **D**efinition                                    |
 | `gr`         | **G**oto **R**eferences                                    |
@@ -251,6 +252,10 @@ default mappings (I included `<C-q>` as I use it heavily)
 | `P` (visual)        | _paste_ and replace the yank buffer with the removed content            |
 
 ## Implementation details
+
+I'm striving to group code by the behaviour and capabilities from a user's
+perspective, rather than by plugin name of the plugin providing the
+configuration. E.g., `git.lua` configures plugins relating to git integration.
 
 ### Plugin management
 
