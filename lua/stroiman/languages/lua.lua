@@ -1,4 +1,4 @@
-local installer = require("stroiman.lsp.mason")
+local installer = require("stroiman.lsp.installer")
 
 installer.ensure_installed({
   "lua-language-server",

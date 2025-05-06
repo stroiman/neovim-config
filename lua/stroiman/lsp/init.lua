@@ -27,7 +27,6 @@ defines keys for the different LSPs, so the file in `lsp/`, and call to
 local plugins = require("stroiman.plugins")
 plugins.load("nvim-lspconfig")
 
-require("stroiman.lsp.mason")
 require("stroiman.lsp.config")
 
 vim.lsp.enable('lua_ls')

@@ -1,10 +1,16 @@
 vim.cmd.packadd("gotest")
 
--- Ensure LSP and other tools are installed
-require("stroiman.lsp.mason").ensure_installed {
+local installer = require("stroiman.lsp.installer")
+installer.ensure_installed {
   "gopls",
   "goimports",
   "golines",
+}
+
+-- For working with v8go - maybe extract to a separate configuration
+installer.ensure_installed {
+  "clangd",
+  "clang-format",
 }
 
 -- Setup "gotest", and experimental plugin I'm working on that automatically
@@ -21,6 +27,8 @@ gotest.setup({
 -- Configure go-specific projections:
 local projections = require("stroiman.navigation.projectionist")
 
+-- The .h/.cc files are for working with v8go. Maybe extract this to a
+-- separate configuration
 projections.add_projection("go.mod", {
   ["*.go"] = {
     command = "src",
