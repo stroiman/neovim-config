@@ -115,7 +115,9 @@ vim.opt.signcolumn = "yes"
 [vim-fugitive]: https://github.com/tpope/vim-fugitive
 [gitsigns]: https://github.com/lewis6991/gitsigns.nvim
 
-### LSP
+### Working with code
+
+#### LSP
 
 - [nvim-lspconfig] Provides default configuration for most LSPs. Some
   customization may be necessary.
@@ -137,12 +139,21 @@ a map already exist.
 > from lspconfig which is no longer supported. That's why it's not present in
 > this configuration.
 
-#### Custom LSP configuration
+##### Custom LSP configuration
 
 A new feature of neovim 0.11 is to search for configurations in the `lsp/`
 folder, merging any configuration found here with other configurations.
 
 This contains a lua configuration that will find neovim runtime files
+
+#### Go
+
+- [gotest] My own plugin for working with Go. This runs go tests whenever you
+  save a file. If tests fail, an output window shows tests results, and has some
+  capabilities of navigating to failed lines. This is early WIP - but I'd love
+  feedback.
+
+[gotest]: https://github.com/stroiman/gotest.nvim
 
 ### Utils
 
