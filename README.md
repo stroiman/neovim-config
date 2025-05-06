@@ -210,7 +210,7 @@ It's essential that quick editing, and reapplication of the configuration is
 quick and painless.
 
 | Map          | Description                                                                                                                                                                  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `<leader>ve` | **V**im **E**dit. Open `init.lua`. When executed from a project, open a new tab and set the cwd for the tab. If executed from the vim configuration, open in the same window |
 | `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running                                                                     |
 | `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file)                                                                                                      |
@@ -221,7 +221,7 @@ quick and painless.
 ### LSP
 
 | Map          | Description                                                |
-+--------------+------------------------------------------------------------+
+|--------------|------------------------------------------------------------|
 | `<leader>ca` | **C**ode **A**ctions                                       |
 | `<leader>cr` | **C**ode **R**ename                                        |
 | `<leader>ch` | **C**ode **H**int (toggle on/off)                          |
@@ -235,7 +235,7 @@ Searching is based on [Telescope]. Be sure to check the documentation regarding
 default mappings (I included `<C-q>` as I use it heavily)
 
 | Map          | Description                                                          |
-+--------------+----------------------------------------------------------------------+
+|--------------|----------------------------------------------------------------------|
 | `<leader>ff` | **F**ind **F**ilenames                                               |
 | `<leader>fg` | **F**ind **G**rep - use ripgrep for fast file content search         |
 | `<leader>ft` | **F**ind **T**odd - find `TODO:` style comments with [todo-comments] |
@@ -245,7 +245,7 @@ default mappings (I included `<C-q>` as I use it heavily)
 ### Misc
 
 | Map                 | Description                                                             |
-+---------------------|-------------------------------------------------------------------------+
+|---------------------|-------------------------------------------------------------------------|
 | **Paste in visual** |                                                                         |
 | `p` (visual)        | _paste_ and keep the yank buffer (i've just reversed `p`/`P` behaviour) |
 | `P` (visual)        | _paste_ and replace the yank buffer with the removed content            |
