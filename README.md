@@ -78,18 +78,42 @@ choices. I will extend as I get more time.
 
 ### Navigation
 
-Navigation uses 
-
 - netrw, vim's build in file managers. See `:help netrw`
 - [Telescope] provides fuzzy finding for virtually everything
 - [vim-projectionist] allows describing semantic relationships between files
+- [harpoon] an easy way to bookmark the files you are working on _right now_.
 - Settings inspired by [vim-vinegar], e.g., mapping `-` to open the directory,
   showing the current file in netrw. In netrw itself, `-` navigates to parent
   directory; so this just acts as an "up" command.
 
+Note: The version of harpoon used is a fork of the [original version by the
+primeagen](https://github.com/ThePrimeagen/harpoon). The original version has
+issues when using multiple working folders.
+
 [Telescope]: https://github.com/nvim-telescope/telescope.nvim
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
+[harpoon]: https://github.com/cosmicboots/harpoon
+
+### Working with git
+
+- [vim-fugitive] The one and only, fugitive. Not trying to emulate a graphical
+  UI in a terminal, but provides the commands you need at your fingertips. More
+  effecient than fancy alternatives, but some learning is required.
+- [gitsigns] Highlight changed, new, and deleted lines in the signcolumn
+
+The default neovim configuration has the setting `signcolumn="auto"`, showing
+the signcolumn when it has content, and hiding it when there is none.
+
+This can cause jerky movement of file content, as gitsigns add or remove content
+in the sign column. To avoid this, I enable the signcolumn at all times.
+
+```
+vim.opt.signcolumn = "yes"
+```
+
+[vim-fugitive]: https://github.com/tpope/vim-fugitive
+[gitsigns]: https://github.com/lewis6991/gitsigns.nvim
 
 ### LSP
 
@@ -124,8 +148,16 @@ This contains a lua configuration that will find neovim runtime files
 
 - [todo-comments] - Highlight `TODO:` style comments, and supports project wide
   navigation.
+- [vim-tmux-navigator] - Seamless navigation between vim windows and tmux splits
+
+- `help` - When opening vim help, default behaviour is a horizontal split. If my
+  viewport is wide enough (> 140 chars), and I only have one window open
+  already, I move the help window to the right, and set the width to 80 chars.
+  Vimhelp files *should* be formatted to 80 chars wide. Some plugins fail to
+  respect this :(
 
 [todo-comments]: https://github.com/folke/todo-comments.nvim
+[vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
 
 ## Select plugin description
 
@@ -164,6 +196,8 @@ quick and painless.
 | `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running                                                                     |
 | `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file)                                                                                                      |
 | `<C-s>`      | **S**ave. Works in both normal and insert mode. In insert mode, you end up in normal mode. (Tip: Remap <kbd>CAPS LOCK</kbd> to <kbd>ctrl</kbd> in your OS)                   |
+| `<leader>hm` | **H**arpoon **M**ark - "bookmark" a file in harpoon                                                                                                                          |
+| `<leader>hq` | **H**arpoon **Q**uickview - Open harpoon marks                                                                                                                               |
 
 ### LSP
 
