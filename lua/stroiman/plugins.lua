@@ -49,7 +49,20 @@ end, {
   nargs = 1,
 })
 
---- Load a 3rd party plugin installed in a `pack/*/opt/` folder. Calling
+--- @class PluginOpts
+--- @field initializing boolean Set to true on first run; false on re-source
+
+--- Call start _before_ loading plugins.
+--- @param opts PluginOpts
+M.start = function(opts)
+  M.initializing = opts.initializing
+end
+
+M.stop = function()
+  M.initializing = false
+end
+
+--- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
 --- multiple times with the same plugin name will have no effect.
 --- @param plugin_name string | string[]
 M.load = function(plugin_name)
@@ -69,7 +82,12 @@ M.load = function(plugin_name)
 
   local plugin = plugins[plugin_name]
   if not plugin then
-    vim.cmd.packadd(plugin_name)
+    vim.cmd {
+      cmd = "packadd",
+      args = { plugin_name },
+      --
+      bang = M.initializing,
+    }
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not
     -- loaded, providing a hint for cleanup.

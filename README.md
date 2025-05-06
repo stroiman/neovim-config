@@ -22,7 +22,7 @@ The make task will
 Launch neovim, and run 
 - `:checkhealth` to check if there are other tools you might want to install,
   like `ripgrep` or `fd`.
-- `:helptags` to generate helptags for all the plugins that were loaded.
+- `:helptags ALL` to generate helptags for all the plugins that were loaded.
 
 Note, on first startup, LSPs will be installed by Mason.
 
@@ -79,13 +79,14 @@ choices. I will extend as I get more time.
 Navigation uses 
 
 - netrw, vim's build in file managers. See `:help netrw`
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim) provides fuzzy
-  finding for virtually everything
-- [vim-projectionist](https://github.com/tpope/vim-projectionist) allows
-  describing semantic relationships between files
-- Settings inspired by [vim-vinegar](), e.g., mapping `-` to open the directory,
+- [Telescope] provides fuzzy finding for virtually everything
+- [vim-projectionist] allows describing semantic relationships between files
+- Settings inspired by [vim-vinegar], e.g., mapping `-` to open the directory,
   showing the current file in netrw. In netrw itself, `-` navigates to parent
   directory; so this just acts as an "up" command.
+
+[Telescope]: https://github.com/nvim-telescope/telescope.nvim
+[vim-projectionist]: https://github.com/tpope/vim-projectionist
 
 ### LSP
 
@@ -102,11 +103,12 @@ a few idiomatic keyboard maps, e.g. `K` which is used for showing documentation,
 is mapped to show code documentation for the symbol under the cursor; unless
 a map already exist.
 
-> [!Note] Many tutorials include mason-lspconfig, which helps build a bridge
-> from mason to lspconfig. At the time of writing this, mason-lspconfig is not
-> updated to new neovim 0.11 functionality, and it's documentation suggests
-> using a method from lspconfig which is no longer supported. That's why it's
-> not present in this configuration.
+> [!Note] 
+> Many tutorials include mason-lspconfig, which helps build a bridge from mason
+> to lspconfig. At the time of writing this, mason-lspconfig is not updated to
+> new neovim 0.11 functionality, and it's documentation suggests using a method
+> from lspconfig which is no longer supported. That's why it's not present in
+> this configuration.
 
 #### Custom LSP configuration
 

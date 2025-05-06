@@ -67,7 +67,3 @@ vim.diagnostic.config({
   float = { border = "rounded" },
   underline = { min = vim.diagnostic.severity.ERROR },
 })
-
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('gopls')
-vim.lsp.enable('csharp_ls')

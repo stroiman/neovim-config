@@ -42,7 +42,9 @@ end
 
 set_options(vim.go)
 
-if not vim.g.stroiman_loaded then
+local initializing = not vim.g.stroiman_loaded
+
+if initializing then
   set_options(vim.opt)
   vim.g.stroiman_loaded = true
 end
@@ -120,6 +122,12 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
 
-require("stroiman.bootstrap")
+-- Tell the plugin system if this
+local plugins = require("stroiman.plugins")
+plugins.start({ initializing = initializing })
+
+pcall(require, "stroiman.bootstrap")
+
+plugins.stop()
 
 vim.cmd.colorscheme("catppuccin")

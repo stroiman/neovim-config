@@ -2,12 +2,11 @@ local plugins = require("stroiman.plugins")
 
 plugins.load("plenary")
 
-plugins.load("gitsigns")
 plugins.load("catppuccin")
 
 require("stroiman.navigation")
 
-require("stroiman.fugitive")
+require("stroiman.git")
 require("stroiman.lsp")
 require("stroiman.help")
 require("stroiman.treesitter")

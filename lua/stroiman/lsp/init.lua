@@ -1,19 +1,32 @@
---[[ === Configuration of neovim's LSP ]]
+--[[      === Configuration of neovim's LSP ===
 
--- This configuration relies on two plugins
---
--- - Mason - Automates installation of LSPs and other tools
--- - nvim-lspconfig - Provides sensible defaults for most LSPs
+Core LSP setup relies on two plugins.
 
--- Note: Many tutorials suggests mason-lspconfig. At the time of writing this, 
--- mason-lspconfig uses pre 0.11 neovim LSP config, and the documented setup 
--- makes use of a method which is no longer supported by nvim-lspconfig.
---
--- mason-lspconf is merely a simple helper; and for neovim 0.11, it needs even
--- less help.
+* Mason - Automates installation of LSPs and other tools
+* nvim-lspconfig - Provides sensible defaults for most LSPs
+
+Lsp configurations can be added to the `lsp/` folder, which will be merged with
+the defaults from nvim-lspconfig.
+
+A configuration is enabled with `vim.lsp.enable(key)`
+
+Configurations have a key, and neovim doesn't dictate the key. Lspconfig 
+defines keys for the different LSPs, so the file in `lsp/`, and call to
+`enable()` must use the same key.
+
+NOTE: Many tutorials suggests mason-lspconfig, but not here:
+
+* neovim 0.11 is easier to configure
+* mason-lspconfig documents a setup that is no longer supported.
+
+--]]
 
 local plugins = require("stroiman.plugins")
 plugins.load("nvim-lspconfig")
 
 require("stroiman.lsp.mason")
 require("stroiman.lsp.config")
+
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('csharp_ls')
