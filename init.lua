@@ -40,8 +40,6 @@ local function set_options(opt)
   opt.splitbelow = false -- Open new horizontal split below
 end
 
-print("STARTING", vim.fn.has("vim_starting"))
-
 set_options(vim.go)
 
 local initializing = not vim.g.stroiman_loaded
@@ -124,12 +122,6 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
 
--- Tell the plugin system if this
-local plugins = require("stroiman.plugins")
-plugins.start({ initializing = initializing })
-
-pcall(require, "stroiman.bootstrap")
-
-plugins.stop()
+require("stroiman.bootstrap")
 
 vim.cmd.colorscheme("catppuccin")

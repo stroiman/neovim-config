@@ -62,7 +62,7 @@ end, {
 --- Returns if vim is starting.
 --- @return boolean
 M.starting = function()
-  return vim.fn.had("vim_starting") == 1
+  return vim.fn.has("vim_starting") == 1
 end
 
 --- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
