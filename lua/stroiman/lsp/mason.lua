@@ -1,3 +1,4 @@
+-- Configure mason, and expose a function to ensure LSPs are installed.
 local plugins = require("stroiman.plugins")
 plugins.load("mason")
 
@@ -20,9 +21,5 @@ M.ensure_installed = function(pkg)
     end
   end
 end
-
-M.ensure_installed("lua-language-server")
-M.ensure_installed("typescript-language-server")
-M.ensure_installed("stylua")
 
 return M

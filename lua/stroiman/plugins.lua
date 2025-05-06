@@ -1,13 +1,11 @@
 --[[
 
-This contains logic to load plugins
+This contains logic to load plugins.
 
-This will use the `packadd` to load "optional" plugins. When running during
-init, `packadd!` is used instead. This will only add the packages to the
-runtimepath, as neovim initialization will execute plugins from the runtime
-path after running the init file.
+This uses `:h packadd` to load "optional" plugins.
 
-start()/stop() must be called, to let the loader know if running from init
+During vim initialization, `:packadd!` is called instead. This doesn't load the
+plugins, just adds them to the RUNTIMEPATH. Neovim will load the plugins after
 
 --]]
 local M = {}
@@ -61,17 +59,10 @@ end, {
   nargs = 1,
 })
 
---- @class PluginOpts
---- @field initializing boolean Set to true on first run; false on re-source
-
---- Call start _before_ loading plugins.
---- @param opts PluginOpts
-M.start = function(opts)
-  M.initializing = opts.initializing
-end
-
-M.stop = function()
-  M.initializing = false
+--- Returns if vim is starting.
+--- @return boolean
+M.starting = function()
+  return vim.fn.had("vim_starting") == 1
 end
 
 --- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
@@ -98,7 +89,7 @@ M.load = function(plugin_name)
       cmd = "packadd",
       args = { plugin_name },
       --
-      bang = M.initializing,
+      bang = M.starting(),
     }
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not
