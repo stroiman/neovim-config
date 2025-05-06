@@ -32,3 +32,36 @@ require("stroiman.lsp.config")
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('gopls')
 vim.lsp.enable('csharp_ls')
+
+--[[
+                     === Configure client capabilities ===
+
+-- NOTE: It is difficult to find information on how to correctly configure client capabilities.
+--
+-- Relevant documentation relies on calling unsupported methods. This is my best
+-- guess, but I think it is sound.
+
+-- The LSP client (neovim) should communicate its capabilities to the LSP
+-- server. Neovim itself provides capabilities, but these can be _extended_,
+-- e.g., by completion engines, snippet engines, etc.
+--
+-- The following code takes nevim's default capabilities, and extends it with
+-- the capabilities offered by cmp-nvim-lsp, the LSP provider for nvim-cmp.
+
+
+-- NOTE: I am in doubt if I need to pass neovim's default capabilities.
+--
+-- Neovim should deep-merge the configurations, and it would seem reasonable
+-- that the default configuration before any user code should contain neovim's
+-- default capabilities. But as settings are deep-merged, passing it shouldn't
+-- have any negative effects.
+--]]
+
+require("stroiman.cmp") -- require to ensure the cmp plugins are loaded
+local nvim_capabilities = vim.lsp.protocol.make_client_capabilities()
+local cmp_capabilities  = require("cmp_nvim_lsp").default_capabilities()
+local capabilities      = vim.tbl_deep_extend("force", nvim_capabilities, cmp_capabilities)
+
+vim.lsp.config('*', { -- Create a default for all languages
+  capabilities = capabilities,
+})

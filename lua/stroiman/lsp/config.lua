@@ -126,22 +126,3 @@ vim.diagnostic.config({
   float = { border = "rounded" },
   underline = { min = vim.diagnostic.severity.ERROR },
 })
-
--- NOTE: It is difficult to find proper information to determine the proper
--- capability configuration. Relevant documentation relies on calling
--- unsupported methods. This is my best guess, but I think it is sound.
-
--- But the LSP client (neovim) should communicate its
--- capabilities to the LSP server. Neovim itself provides capabilities, but
--- these can be _extended_, e.g., by completion engines, snippet engines, etc.
---
--- The following code takes nevim's default capabilities, and extends it with
--- the capabilities offered by cmp_nvim_lsp, the LSP provider for nvim-cmp.
-
-local nvim_capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_capabilities  = require("cmp_nvim_lsp").default_capabilities()
-local capabilities      = vim.tbl_deep_extend("force", nvim_capabilities, cmp_capabilities)
-
-vim.lsp.config('*', { -- Create a default for all languages
-  capabilities = capabilities,
-})
