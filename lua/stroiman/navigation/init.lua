@@ -11,6 +11,7 @@ vim.g.netrw_sort_sequence = [[\/$]]
 
 require("stroiman.navigation.telescope")
 require("stroiman.navigation.projectionist")
+require("stroiman.navigation.harpoon")
 
 -- Navigate from a file to the containing folder, and select the file you were
 -- editing before.
@@ -32,5 +33,5 @@ vim.keymap.set("n", "-", function()
   if style == 3 then -- Tree
     search_pattern = "| " .. file .. "$"
   end
-    vim.fn.search(search_pattern)
+  vim.fn.search(search_pattern)
 end)

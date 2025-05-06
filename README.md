@@ -299,10 +299,10 @@ over many, many years.
   configures neovim from scratch. His resources were the trigger for me to stop
   using the training wheels (lsp-zero) and configure the tools myself (today,
   I'd say LSP configuration is so easy that training wheels are hardly required)
-- [The Primeagen]'s [Neovim RC From Scratch] - Credit must go where credit is
-  due. This kickstarted my first lua-based configuration; after having used
-  vimscript configuration for neovim. But most that is taught here is better
-  accomplished in other ways. But I still have the `p`->`P` map.
+- [The Primeagen]'s [Neovim RC From Scratch] - Credit goes where credit is
+  due. This kickstarted my first lua-based configuration. All plugin
+  configuration can be done better IMHO, but there's some clever keymaps, that
+  can help inspire thinking about just the small things that fix small issues.
 
 [Vimcasts]: http://vimcasts.org/
 [Drew Neil]: http://drewneil.com/
