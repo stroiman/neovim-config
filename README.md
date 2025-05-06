@@ -5,8 +5,8 @@ This is my re-sourcable, plugin-manager free neovim configuration.
 > [!WARNING]
 > This is provided as-is for you to study or use as inspiration; but this is
 > **my** configuration, and I will update it to _my_ needs, change key maps when
-> _I_ want to try something now. So expect changes to behaviour with no prior
-> warning if you continuously pull changes to your own configuration.
+> _I_ want to try something now. If you continuously pull changes from this into
+> your own config, expect changes to behaviour with no prior warning.
 
 ## Installation
 
@@ -171,10 +171,9 @@ This contains a lua configuration that will find neovim runtime files
 - [vim-tmux-navigator] - Seamless navigation between vim windows and tmux splits
 
 - `help` - When opening vim help, default behaviour is a horizontal split. If my
-  viewport is wide enough (> 140 chars), and I only have one window open
-  already, I move the help window to the right, and set the width to 80 chars.
-  Vimhelp files *should* be formatted to 80 chars wide. Some plugins fail to
-  respect this :(
+  viewport is wide enough, I move the help window to the right (`wincmd L`), and
+  set the width to 80 chars. Vimhelp files *should* be formatted to 80 chars
+  wide. Some plugins don't :(
 
 [todo-comments]: https://github.com/folke/todo-comments.nvim
 [vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
