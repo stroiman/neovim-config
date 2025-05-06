@@ -122,6 +122,10 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>", { desc = "Save current file" })
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "<C-x>", "<nop>")
 
+-- Enter legacy Ex mode. I never use this (maybe I'm missing out?), but I often
+-- end up here when I want to type 'gq'. It's pain to exit.
+vim.keymap.set("n", "gQ", "<nop>")
+
 require("stroiman.bootstrap")
 
 vim.cmd.colorscheme("catppuccin")

@@ -4,8 +4,8 @@ This is my re-sourcable, plugin-manager free neovim configuration
 
 ## Installation
 
-**Requirements:** This configuration requires neovim 0.11 - so be sure to update
-if you haven't allready.
+**Requirements:** This configuration requires neovim 0.11. LSP configuration
+will not work with earlier versions.
 
 Git clone this to `$HOME/.config.nvim` and run the default make target in the
 root. Alternatively, clone to another folder in `$HOME/.config`; see below.
@@ -117,6 +117,13 @@ folder, merging any configuration found here with other configurations.
 
 This contains a lua configuration that will find neovim runtime files
 
+### Utils
+
+- [todo-comments] - Highlight `TODO:` style comments, and supports project wide
+  navigation.
+
+[todo-comments]: https://github.com/folke/todo-comments.nvim
+
 ## Select plugin description
 
 Some plugins deserve a little more explaining
@@ -141,7 +148,7 @@ the English translation file, `:Ede` to open the German translation file, etc.
 ## Usage
 
 Don't expect full documentation of everything here, it just takes to long to
-keep up to date. But some essential principles are worth mentioning
+keep up to date. But some essential principles are worth mentioning.
 
 ### Working with the configuration itself
 
@@ -164,6 +171,17 @@ quick and painless.
 | `gd`         | **G**oto **D**efinition                                    |
 | `gr`         | **G**oto **R**eferences                                    |
 
+### Searching
+
+Searching is based on [Telescope]. Be sure to check the documentation regarding
+default mappings (I included `<C-q>` as I use it heavily)
+
+| Map          | Description                                                          |
++--------------+----------------------------------------------------------------------+
+| `<leader>ff` | **F**ind **F**ilenames                                               |
+| `<leader>fg` | **F**ind **G**rep - use ripgrep for fast file content search         |
+| `<leader>ft` | **F**ind **T**odd - find `TODO:` style comments with [todo-comments] |
+| `<C-q>`      | (Default telescope map) Crate a quicklist with current results       |
 
 ## Inspiration
 
