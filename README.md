@@ -148,11 +148,21 @@ keep up to date. But some essential principles are worth mentioning
 It's essential that quick editing, and reapplication of the configuration is
 quick and painless.
 
-| Map | Description |
-|-|-|
+| Map          | Description                                                                                                                                                                  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | `<leader>ve` | **V**im **E**dit. Open `init.lua`. When executed from a project, open a new tab and set the cwd for the tab. If executed from the vim configuration, open in the same window |
-| `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running |
-| `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file) |
+| `<leader>vs` | **V**im **S**ource. Run `:source $MYVIMRC`, rerunning the configuration. Remember to save before running                                                                     |
+| `<leader>vs` | **V**im e**X**exute. Save and `:source %` (execute currently open file)                                                                                                      |
+
+### LSP
+
+| Map          | Description                                                |
++--------------+------------------------------------------------------------+
+| `<leader>ca` | **C**ode **A**ctions                                       |
+| `<leader>ca` | **C**ode **R**ename                                        |
+| `[d` / `]d`  | Previous/next diagnostics. Shows the diagnostic in a float |
+| `gd`         | **G**oto **D**efinition                                    |
+| `gr`         | **G**oto **R**eferences                                    |
 
 
 ## Inspiration

@@ -17,6 +17,9 @@ By configuring this pr. buffer when attaching the LSP, we avoid create maps
 that might generate errors when an LSP isn't attached. We can also check the
 capabilities of the LSP so we don't attach behaviour that isn't supported.
 
+For example, the keymap for code actions are only configured if the LSP
+supports the methods `"textDocument/codeAction"`
+
 This configures further autocommands, e.g.,
 
 - BufWritePre to format the file before save.
@@ -44,7 +47,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     --- @class MapOpts
     --- @field desc? string
-    --- @field requires? string
+    --- @field requires? string A method that the LSP must support for this
+    --- command. See: `:h lsp-api`.
 
     --- @param opts? MapOpts
     local map = function(keys, func, opts)
@@ -67,7 +71,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    map("<leader>cr", vim.lsp.buf.rename)
     map("gd", vim.lsp.buf.definition)
     map("gr", vim.lsp.buf.references)
     map("K", function()
@@ -77,6 +80,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end)
     map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
     map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+    map("<leader>cr", vim.lsp.buf.rename, { 
+      requires = "textDocument/rename"
+    })
     map("<leader>ca", function() vim.lsp.buf.code_action() end, {
       desc = "Code actions",
       requires = "textDocument/codeAction"
