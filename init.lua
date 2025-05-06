@@ -132,6 +132,8 @@ vim.keymap.set("n", "gQ", "<nop>")
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
 
+vim.keymap.set("n", "<leader>h", ":noh<cr>")
+
 require("stroiman.bootstrap")
 
 vim.cmd.colorscheme("catppuccin")

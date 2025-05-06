@@ -1,6 +1,6 @@
 # Stroiman's neovim config
 
-This is my re-sourcable, plugin-manager free neovim configuration.
+This is my re-sourcable, plugin-manager free, neovim configuration.
 
 > [!WARNING]
 > This is provided as-is for you to study or use as inspiration; but this is
