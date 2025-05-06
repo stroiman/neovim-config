@@ -57,3 +57,6 @@ projections.add_projection("go.mod", {
     },
   },
 })
+
+vim.lsp.enable('gopls')
+vim.lsp.enable('clangd')

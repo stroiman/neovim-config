@@ -30,7 +30,6 @@ plugins.load("nvim-lspconfig")
 require("stroiman.lsp.config")
 
 vim.lsp.enable('lua_ls')
-vim.lsp.enable('gopls')
 vim.lsp.enable('csharp_ls')
 
 --[[
