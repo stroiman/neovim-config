@@ -13,6 +13,27 @@ vim.cmd.packadd("nvim-cmp")
 
 local cmp = require('cmp')
 
+--[[
+                   === Configure LSP client capabilities ===
+
+-- NOTE: It is difficult to find information on how to correctly configure client capabilities.
+--
+-- Relevant documentation relies on calling unsupported methods. This is my best
+-- guess, but I think it is sound.
+
+-- The LSP client (neovim) should communicate its capabilities to the LSP
+-- server. Neovim itself provides capabilities, but these can be _extended_,
+-- e.g., by completion engines, snippet engines, etc.
+
+-- vim.lsp.config() deep merges the new config with existing config; so
+-- so calling this, passing the cabailities of "nvim-cmp-lsp" should extend the
+-- client capabilities communicated to the server, to include those provided by
+-- nvim-cmp.
+--]]
+vim.lsp.config("*", {
+  capabilities = require("cmp_nvim_lsp").default_capabilities()
+})
+
 cmp.setup({
   snippet = {
     expand = function(args)
