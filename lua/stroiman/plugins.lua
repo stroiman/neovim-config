@@ -25,6 +25,11 @@ local install_plugin = function(github_repo, dir_name)
   }, function(obj)
     if obj.code == 0 then
       print("Plugin installed. Time to configure")
+      vim.schedule(function()
+        -- Add the plugin to the RTP and rebuild helptags.
+        M.load("dir_name", { bang = true })
+        vim.cmd.helptags("ALL")
+      end)
     else
       print("Error installing plugin")
     end
@@ -65,10 +70,16 @@ M.starting = function()
   return vim.fn.has("vim_starting") == 1
 end
 
+--- @class LoadOpts
+--- @field bang? boolean When true, RTP is updated, but the plugin is not
+--- loaded. Poorly named, but corresponds to the bang option to `packadd`.
+
 --- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
 --- multiple times with the same plugin name will have no effect.
 --- @param plugin_name string | string[]
-M.load = function(plugin_name)
+--- @param opts? LoadOpts
+M.load = function(plugin_name, opts)
+  opts = opts or {}
   if type(plugin_name) == "table" then
     for _, name in ipairs(plugin_name) do
       M.load(name)
@@ -89,7 +100,7 @@ M.load = function(plugin_name)
       cmd = "packadd",
       args = { plugin_name },
       --
-      bang = M.starting(),
+      bang = opts.bang or M.starting(),
     }
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not

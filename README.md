@@ -28,9 +28,10 @@ The make task will
 Launch neovim, and run 
 - `:checkhealth` to check if there are other tools you might want to install,
   like `ripgrep` or `fd`.
-- `:helptags ALL` to generate helptags for all the plugins that were loaded.
+- `:helptags ALL` to generate helptags for all the plugins that were installed.
 
-Note, on first startup, LSPs will be installed by Mason.
+> [!NOTE]
+> On first startup, LSPs that **I** use will be installed by Mason.
 
 ### Non-default configuration folder
 
@@ -67,13 +68,8 @@ re-`:source` it without reloading neovim, i.e., keeping existing buffers open.
 Being able to _re-source_ the configuration seems to be the _lost art of neovim
 configuration_.
 
-Some changes _may_ require a restact, if I accidentally placed neovim in a bad
+Some changes _may_ require a restart, if I accidentally placed neovim in a bad
 state. But restarting should be the exception, not the default.
-
-As plugin managers seem to want to control plugin configuration, they really
-work against my purpose. Loading plugins isn't really a difficult task. Plugins
-are added as git submodules to this repository, so I have no need for a
-lock-file to recreate a known state.
 
 ## Configuration
 
@@ -191,6 +187,25 @@ default mappings (I included `<C-q>` as I use it heavily)
 | `<leader>ft` | **F**ind **T**odd - find `TODO:` style comments with [todo-comments] |
 | `<C-q>`      | (Default telescope map) Crate a quicklist with current results       |
 | `-`          | Navigate to "parent" directory from a file (default netrw behaviour) |
+
+## Implementation details
+
+### Plugin management
+
+As plugin managers seem to want to control plugin configuration, they really
+work against my purpose. So I manage plugin versioning and loading myself.
+
+Without a plugin manager, I manage plugins myself. Plugins are installed as git
+submodules. This provides versioning capabilities, i.e., any version of my
+configuration already has a set of plugin versions; withouth the necessity of a
+lock-file.
+
+At runtime plugins are loaded by calling `h: packadd`.
+I have a tiny bit of wrapper code surrounding this to avoid loading the
+same plugin twice; and defer loading during vim initialization
+
+I created the user command, `:PlugInstall` that installs a plugin from github,
+adds it to the RTP, and rebuilds helptags; but does not load the plugin.
 
 ## Inspiration
 
