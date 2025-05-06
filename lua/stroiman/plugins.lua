@@ -1,3 +1,15 @@
+--[[
+
+This contains logic to load plugins
+
+This will use the `packadd` to load "optional" plugins. When running during
+init, `packadd!` is used instead. This will only add the packages to the
+runtimepath, as neovim initialization will execute plugins from the runtime
+path after running the init file.
+
+start()/stop() must be called, to let the loader know if running from init
+
+--]]
 local M = {}
 
 --- Clone a github repository as a submodule under in `pack/vendor/opt/`
