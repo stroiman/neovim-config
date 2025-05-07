@@ -23,6 +23,7 @@ end
 
 M.add_projection("init.lua", {
   ["lua/stroiman/*.lua"] = { type = "src" },
+  ["pack/**/opt/*/"] = { type = "plug" },
 })
 
 return M
