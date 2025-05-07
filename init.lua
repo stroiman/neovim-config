@@ -136,4 +136,10 @@ vim.keymap.set("n", "<leader>h", ":noh<cr>")
 
 require("stroiman.bootstrap")
 
-vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("catppuccin")
+
+require("stroiman.plugins").load("gruvbox")
+require("gruvbox").setup({
+  contrast = "hard"
+})
+vim.cmd.colorscheme("gruvbox")
