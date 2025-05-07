@@ -16,12 +16,15 @@ local M = {}
 local install_plugin = function(github_repo, dir_name)
   local pluginpath = "pack/vendor/opt/" .. dir_name
   local source = "https://github.com/" .. github_repo
+      local std_out_carry = ""
+      local std_err_carry = ""
   vim.system({
     "git", "submodule", "add",
     source,
     pluginpath,
   }, {
-    cwd = vim.fn.stdpath("config")
+    cwd = vim.fn.stdpath("config"),
+    text = true,
   }, function(obj)
     if obj.code == 0 then
       print("Plugin installed. Time to configure")
@@ -31,7 +34,25 @@ local install_plugin = function(github_repo, dir_name)
         vim.cmd.helptags("ALL")
       end)
     else
-      print("Error installing plugin")
+      print("Error installing plugin\n", obj.stdout, obj.stderr)
+    end
+  end)
+end
+
+
+--- Check if the current working dir is committed. Helps avoid messing with
+--- modules in a dirty state
+--- @param cont function
+local function check_diff(cont)
+  vim.system({
+    "git", "diff", "--exit-code",
+  }, {
+    cwd = vim.fn.stdpath("config")
+  }, function(obj)
+    if obj.code == 0 then
+      cont()
+    else
+      print("Error: neovim config folder in dirty state. Commit before installing/updating plugins")
     end
   end)
 end
@@ -59,7 +80,9 @@ vim.api.nvim_create_user_command("PlugInstall", function(cmd_args)
   if not name then
     error("Unable to determine destination directory for repo: " .. repo_name)
   end
-  install_plugin(repo_name, name)
+  check_diff(function()
+    install_plugin(repo_name, name)
+  end)
 end, {
   nargs = 1,
 })
