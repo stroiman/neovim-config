@@ -1,19 +1,19 @@
 vim.cmd.packadd("gotest")
 
 local installer = require("stroiman.lsp.installer")
-installer.ensure_installed {
+installer.ensure_installed({
   "gopls",
   "goimports",
   "golines",
-}
+})
 
 -- For working with v8go - maybe extract to a separate configuration
-installer.ensure_installed {
+installer.ensure_installed({
   "clangd",
   "clang-format",
-}
+})
 
--- Setup "gotest", and experimental plugin I'm working on that automatically
+-- Setup "gotest", an experimental plugin I'm working on that automatically
 -- executes tests when you save a .go file.
 local gotest = require("gotest")
 
@@ -58,5 +58,5 @@ projections.add_projection("go.mod", {
   },
 })
 
-vim.lsp.enable('gopls')
-vim.lsp.enable('clangd')
+vim.lsp.enable("gopls")
+vim.lsp.enable("clangd")

@@ -11,7 +11,7 @@ conform.setup({
     css = { "prettierd" },
     json = { "prettierd" },
     ocaml = { "ocamlformat" },
-    go = { "golines", "gofmt" },
+    go = { "goimports", "golines", "gofmt" },
   },
   format_on_save = {
     lsp_fallback = true,
