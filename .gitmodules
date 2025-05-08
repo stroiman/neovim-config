@@ -76,3 +76,6 @@
 [submodule "pack/vendor/opt/neoscroll"]
 	path = pack/vendor/opt/neoscroll
 	url = https://github.com/karb94/neoscroll.nvim
+[submodule "pack/vendor/opt/conform"]
+	path = pack/vendor/opt/conform
+	url = https://github.com/stevearc/conform.nvim

@@ -16,8 +16,8 @@ local M = {}
 local install_plugin = function(github_repo, dir_name)
   local pluginpath = "pack/vendor/opt/" .. dir_name
   local source = "https://github.com/" .. github_repo
-      local std_out_carry = ""
-      local std_err_carry = ""
+  local std_out_carry = ""
+  local std_err_carry = ""
   vim.system({
     "git", "submodule", "add",
     source,
@@ -30,7 +30,7 @@ local install_plugin = function(github_repo, dir_name)
       print("Plugin installed. Time to configure")
       vim.schedule(function()
         -- Add the plugin to the RTP and rebuild helptags.
-        M.load("dir_name", { bang = true })
+        M.load("dir_name", { skip_load = true })
         vim.cmd.helptags("ALL")
       end)
     else
@@ -94,8 +94,7 @@ M.starting = function()
 end
 
 --- @class LoadOpts
---- @field bang? boolean When true, RTP is updated, but the plugin is not
---- loaded. Poorly named, but corresponds to the bang option to `packadd`.
+--- @field skip_load? boolean When true, only RTP is updated.
 
 --- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
 --- multiple times with the same plugin name will have no effect.
@@ -123,12 +122,14 @@ M.load = function(plugin_name, opts)
       cmd = "packadd",
       args = { plugin_name },
       --
-      bang = opts.bang or M.starting(),
+      bang = opts.skip_load or M.starting(),
     }
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not
     -- loaded, providing a hint for cleanup.
-    plugins[plugin_name] = { loaded = true }
+    if not opts.skip_load then
+      plugins[plugin_name] = { loaded = true }
+    end
   end
 
   -- Store the modified state.

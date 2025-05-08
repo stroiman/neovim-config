@@ -28,3 +28,4 @@ local plugins = require("stroiman.plugins")
 plugins.load("nvim-lspconfig")
 
 require("stroiman.lsp.config")
+require("stroiman.lsp.formatter")

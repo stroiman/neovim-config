@@ -60,7 +60,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local buf = event.buf
 
     -- unnecessary, right? This is just to suppress missing nil check warning
-    if not client then error("No LSP client found") end
+    if not client then
+      error("No LSP client found")
+    end
 
     --- @class MapOpts
     --- @field desc? string
@@ -71,12 +73,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
       opts = opts or {}
       local requires = opts.requires
 
-
       local desc = opts.desc and "LSP: " .. opts.desc
       local map_opt = { buffer = buf, desc = desc }
       local modes = "n"
       if requires and not client:supports_method(requires) then
-        vim.keymap.set(modes, keys, function() print("LSP: Feature not supported: " .. requires) end, map_opt)
+        vim.keymap.set(modes, keys, function()
+          print("LSP: Feature not supported: " .. requires)
+        end, map_opt)
       else
         vim.keymap.set(modes, keys, func, map_opt)
       end
@@ -85,32 +88,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     map("gd", vim.lsp.buf.definition)
     map("gr", vim.lsp.buf.references)
-    map("K", function() vim.lsp.buf.hover({ border = "rounded", }) end)
+    map("K", function()
+      vim.lsp.buf.hover({ border = "rounded" })
+    end)
     map("<leader>cr", vim.lsp.buf.rename, {
-      requires = "textDocument/rename"
+      requires = "textDocument/rename",
     })
-    map("<leader>ca", function() vim.lsp.buf.code_action() end, {
+    map("<leader>ca", function()
+      vim.lsp.buf.code_action()
+    end, {
       desc = "Code actions",
-      requires = "textDocument/codeAction"
+      requires = "textDocument/codeAction",
     })
 
     map("<leader>ch", function() -- Code Hint
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, { requires = 'textDocument/inlayHint' })
-
+    end, { requires = "textDocument/inlayHint" })
 
     if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = false })
     end
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = buf,
-      group = group,
-      callback = function()
-        vim.lsp.buf.format()
-      end,
-    })
-  end
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   buffer = buf,
+    --   group = group,
+    --   callback = function()
+    --     vim.lsp.buf.format()
+    --   end,
+    -- })
+  end,
 })
 
 vim.api.nvim_create_autocmd("LspDetach", {
@@ -123,7 +129,7 @@ vim.api.nvim_create_autocmd("LspDetach", {
       vim.keymap.del(map.modes, map.lhs, { buffer = buf })
     end
     vim.api.nvim_buf_del_var(buf, "stroiman_lsp_mapping")
-  end
+  end,
 })
 
 vim.diagnostic.config({
