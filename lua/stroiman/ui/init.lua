@@ -1,6 +1,7 @@
 local plugins = require("stroiman.plugins")
 
 require("stroiman.ui.help") -- Move the help window to the right, if there's enough space
+require("stroiman.ui.lualine") 
 
 -- Smooth scrolling. I may keep it, I may throw it away.
 

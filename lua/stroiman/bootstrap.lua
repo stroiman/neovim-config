@@ -13,7 +13,6 @@ require("stroiman.treesitter")
 require("stroiman.cmp")
 require("stroiman.luasnip")
 require("stroiman.languages")
-require("stroiman.lualine")
 
 vim.cmd.packadd("vim-tmux-navigator")
 
