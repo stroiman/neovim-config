@@ -73,3 +73,6 @@
 [submodule "pack/vendor/opt/gruvbox"]
 	path = pack/vendor/opt/gruvbox
 	url = https://github.com/ellisonleao/gruvbox.nvim
+[submodule "pack/vendor/opt/neoscroll"]
+	path = pack/vendor/opt/neoscroll
+	url = https://github.com/karb94/neoscroll.nvim

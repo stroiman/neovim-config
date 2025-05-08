@@ -7,6 +7,7 @@ plugins.load("catppuccin")
 require("stroiman.navigation")
 
 require("stroiman.git")
+require("stroiman.ui")
 require("stroiman.lsp")
 require("stroiman.help")
 require("stroiman.treesitter")
