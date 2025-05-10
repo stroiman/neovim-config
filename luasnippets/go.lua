@@ -1,6 +1,5 @@
 local go_struct_result = function()
   local current_line = vim.api.nvim_win_get_cursor(0)[1]
-  P({ "Current line", current_line })
   local node = vim.treesitter.get_node()
   if node == nil then
     return nil
@@ -38,7 +37,6 @@ local go_struct_result = function()
     end
     node = node:next_sibling()
     local start = node:start()
-    P(start)
     if start > current_line then
       break
     end
@@ -64,7 +62,6 @@ local go_receiver_name = function(type)
 end
 
 local go_prev_struct = function(_, info)
-  P(info.index)
   local type = go_prev_struct_name()
   if type == nil then
     return t("")
