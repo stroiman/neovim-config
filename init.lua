@@ -36,7 +36,7 @@ local function set_options(opt)
   -- Always make room for a sign column, so things don't shift around
   opt.signcolumn = "yes"
 
-  opt.splitright = true  -- Open new vertical split to the right
+  opt.splitright = true -- Open new vertical split to the right
   opt.splitbelow = false -- Open new horizontal split below
 end
 
@@ -48,7 +48,6 @@ if initializing then
   set_options(vim.opt)
   vim.g.stroiman_loaded = true
 end
-
 
 --- Open the init file. If opened from a project, open in a new tab, and set the
 --- working directory for the tab. If opened from within a file in the
@@ -140,6 +139,6 @@ require("stroiman.bootstrap")
 
 require("stroiman.plugins").load("gruvbox")
 require("gruvbox").setup({
-  contrast = "hard"
+  contrast = "hard",
 })
 vim.cmd.colorscheme("gruvbox")

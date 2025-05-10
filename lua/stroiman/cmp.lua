@@ -31,13 +31,13 @@ local cmp = require('cmp')
 -- nvim-cmp.
 --]]
 vim.lsp.config("*", {
-  capabilities = require("cmp_nvim_lsp").default_capabilities()
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   window = {
