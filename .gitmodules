@@ -79,3 +79,9 @@
 [submodule "pack/vendor/opt/conform"]
 	path = pack/vendor/opt/conform
 	url = https://github.com/stevearc/conform.nvim
+[submodule "pack/vendor/opt/gitgraph"]
+	path = pack/vendor/opt/gitgraph
+	url = https://github.com/isakbm/gitgraph.nvim
+[submodule "pack/vendor/opt/diffview"]
+	path = pack/vendor/opt/diffview
+	url = https://github.com/sindrets/diffview.nvim
