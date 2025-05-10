@@ -11,7 +11,7 @@ plugins.load({
 
 vim.cmd.packadd("nvim-cmp")
 
-local cmp = require('cmp')
+local cmp = require("cmp")
 
 --[[
                    === Configure LSP client capabilities ===
@@ -34,6 +34,14 @@ vim.lsp.config("*", {
   capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 
+local win_config = {
+  border = { "", "", "", "│", "", "", "", "│" },
+  winhighlight = "Normal:StroimanCmpNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+}
+--  'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None'
+
+vim.api.nvim_set_hl(0, "StroimanCmpNormal", { bg = "black" })
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -41,7 +49,7 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(win_config),
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
@@ -68,11 +76,11 @@ cmp.setup({
   --   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   -- }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
   }, {
-    { name = 'buffer' },
-  })
+    { name = "buffer" },
+  }),
 })
 
 -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
@@ -84,25 +92,26 @@ cmp.setup({
           { name = 'buffer' },
         })
       })
-      require("cmp_git").setup() ]] --
+      require("cmp_git").setup() ]]
+--
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
+cmp.setup.cmdline({ "/", "?" }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-  }
+    { name = "buffer" },
+  },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = "path" },
   }, {
-    { name = 'cmdline' }
+    { name = "cmdline" },
   }),
-  matching = { disallow_symbol_nonprefix_matching = false }
+  matching = { disallow_symbol_nonprefix_matching = false },
 })
 
 -- -- Set up lspconfig.
