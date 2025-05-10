@@ -1,7 +1,7 @@
 local plugins = require("stroiman.plugins")
 plugins.load("lualine")
 
-local gotest_loaded, gotest = pcall(require, "gotest")
+local go_ok, go_settings = pcall(require, "stroiman.languages.go")
 
 local opts = {
   sections = {
@@ -14,9 +14,9 @@ local opts = {
   },
   extensions = { "fugitive", "quickfix" },
 }
-if gotest_loaded then
+if go_ok and go_settings.gotest_loaded then
   table.insert(opts.sections.lualine_a, function()
-    local res = gotest.status()
+    local res = require("gotest").status()
     if res then
       return res
     end

@@ -1,5 +1,7 @@
 vim.cmd.packadd("gotest")
 
+local M = {}
+
 local installer = require("stroiman.lsp.installer")
 installer.ensure_installed({
   "gopls",
@@ -15,14 +17,18 @@ installer.ensure_installed({
 
 -- Setup "gotest", an experimental plugin I'm working on that automatically
 -- executes tests when you save a .go file.
-local gotest = require("gotest")
+local ok, gotest = pcall(require, "gotest")
+M.gotest_loaded = ok
 
-gotest.setup({
-  aucommand_pattern = { "*.go", "*.cc", "*.h" },
-  output_window = {
-    show = "auto",
-  },
-})
+if ok then
+  M.gotest = gotest
+  gotest.setup({
+    aucommand_pattern = { "*.go", "*.cc", "*.h" },
+    output_window = {
+      show = "auto",
+    },
+  })
+end
 
 -- Configure go-specific projections:
 local projections = require("stroiman.navigation.projectionist")
@@ -60,3 +66,5 @@ projections.add_projection("go.mod", {
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
+
+return M
