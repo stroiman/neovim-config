@@ -192,4 +192,13 @@ func (s <rec>) <name>() {
     )
   ),
   s("actx", fmta("ctx context.Context", {})),
+  s(
+    "map",
+    fmta(
+      -- "<> := make([]<>)",
+      -- { i(1) ,i(2}
+      "<> := make([]<>, len(<>))\nfor i, <> := range <> {\n\t<>[i] = <>\n}",
+      { i(1), i(2), i(3), i(4), rep(3), rep(1), i(0) }
+    )
+  ),
 }
