@@ -19,7 +19,9 @@ local install_plugin = function(github_repo, dir_name)
   local std_out_carry = ""
   local std_err_carry = ""
   vim.system({
-    "git", "submodule", "add",
+    "git",
+    "submodule",
+    "add",
     source,
     pluginpath,
   }, {
@@ -39,15 +41,16 @@ local install_plugin = function(github_repo, dir_name)
   end)
 end
 
-
 --- Check if the current working dir is committed. Helps avoid messing with
 --- modules in a dirty state
 --- @param cont function
 local function check_diff(cont)
   vim.system({
-    "git", "diff", "--exit-code",
+    "git",
+    "diff",
+    "--exit-code",
   }, {
-    cwd = vim.fn.stdpath("config")
+    cwd = vim.fn.stdpath("config"),
   }, function(obj)
     if obj.code == 0 then
       cont()
@@ -118,12 +121,12 @@ M.load = function(plugin_name, opts)
 
   local plugin = plugins[plugin_name]
   if not plugin then
-    vim.cmd {
+    vim.cmd({
       cmd = "packadd",
       args = { plugin_name },
       --
       bang = opts.skip_load or M.starting(),
-    }
+    })
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not
     -- loaded, providing a hint for cleanup.

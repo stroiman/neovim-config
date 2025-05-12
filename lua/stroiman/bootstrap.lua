@@ -26,6 +26,6 @@ vim.keymap.set("n", "<leader>ft", ":TodoTelescope<cr>")
 
 -- Trying this out, automatic formatting or tables in markdown.
 -- + over | only because kitty renders tables poorly with ligatures.
-vim.g.table_mode_corner_corner = '|'
+vim.g.table_mode_corner_corner = "|"
 
 plugins.load("vim-table-mode")
