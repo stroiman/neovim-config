@@ -85,3 +85,6 @@
 [submodule "pack/vendor/opt/diffview"]
 	path = pack/vendor/opt/diffview
 	url = https://github.com/sindrets/diffview.nvim
+[submodule "pack/vendor/opt/gp"]
+	path = pack/vendor/opt/gp
+	url = https://github.com/Robitx/gp.nvim
