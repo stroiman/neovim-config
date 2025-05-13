@@ -10,3 +10,12 @@ require("neoscroll").setup({
   duration_multiplier = 0.5,
   cursor_scrolls_alone = false,
 })
+
+local group = vim.api.nvim_create_augroup("stroiman_ui", { clear = true })
+
+vim.api.nvim_create_autocmd("VimResized", {
+  group = group,
+  callback = function()
+    vim.cmd.wincmd("=")
+  end,
+})
