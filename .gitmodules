@@ -88,3 +88,6 @@
 [submodule "pack/vendor/opt/gp"]
 	path = pack/vendor/opt/gp
 	url = https://github.com/Robitx/gp.nvim
+[submodule "pack/vendor/opt/nightfox"]
+	path = pack/vendor/opt/nightfox
+	url = https://github.com/EdenEast/nightfox.nvim
