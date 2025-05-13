@@ -131,7 +131,7 @@ vim.keymap.set("n", "gQ", "<nop>")
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
 
-vim.keymap.set("n", "<leader>h", ":noh<cr>")
+vim.keymap.set("n", "<leader>hh", ":noh<cr>")
 
 require("stroiman.bootstrap")
 
