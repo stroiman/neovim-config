@@ -106,7 +106,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { requires = "textDocument/inlayHint" })
 
     if client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = false })
+      vim.lsp.completion.enable(true, client_id, event.buf, {
+        autotrigger = true,
+      })
     end
 
     -- vim.api.nvim_create_autocmd("BufWritePre", {

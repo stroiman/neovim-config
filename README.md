@@ -126,6 +126,14 @@ vim.opt.signcolumn = "yes"
 
 ### Working with code
 
+#### Completion.
+
+The current completion is temporarily a vanilla neovim completion.
+
+While I used to use [nvim-cmp], I've experienced neovim locking on 100% CPU
+during completion; a problem that I saw in two different configs on after an
+nvim 0.11 upgrade.
+
 #### LSP
 
 - [nvim-lspconfig] Provides default configuration for most LSPs. Some

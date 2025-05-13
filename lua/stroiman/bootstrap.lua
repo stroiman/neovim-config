@@ -11,7 +11,9 @@ require("stroiman.git")
 require("stroiman.ui")
 require("stroiman.lsp")
 require("stroiman.treesitter")
-require("stroiman.cmp")
+-- Disable cmp. I've experienced neovim locking on 100% CPU cycles during
+-- completion; so now we try with alternate completion mechanics
+-- require("stroiman.cmp")
 require("stroiman.luasnip")
 require("stroiman.languages")
 require("stroiman.ai")
