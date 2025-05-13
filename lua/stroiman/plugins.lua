@@ -60,10 +60,10 @@ local function check_diff(cont)
   end)
 end
 
---- Resolves the directory where to store a plugin. Many plugins have a .nvim
---- suffix; which I don't want in the folder name it's installed in.
+--- Resolves the directory where to store a plugin. This is just the 2nd and
+--- last part when splitting by `/`, possibly with a `.git` removed.
 --- @param plugin string The github project, e.g. stroiman/gotest.nvim
-local function get_folder_name(plugin)
+local function resolve_plugin_dir_name(plugin)
   local paths = vim.fn.split(plugin, "/")
   if #paths ~= 2 then
     print("Expected a string in the form 'user/repository'")
@@ -71,7 +71,6 @@ local function get_folder_name(plugin)
   end
   local path = paths[#paths]
   path = path:gsub("%.git", "")
-  path = path:gsub("%.nvim", "")
   return path
 end
 
@@ -79,7 +78,7 @@ end
 -- name to clone the git submodule.
 vim.api.nvim_create_user_command("PlugInstall", function(cmd_args)
   local repo_name = cmd_args.args
-  local name = get_folder_name(repo_name)
+  local name = resolve_plugin_dir_name(repo_name)
   if not name then
     error("Unable to determine destination directory for repo: " .. repo_name)
   end
