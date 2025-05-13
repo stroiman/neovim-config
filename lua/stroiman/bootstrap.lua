@@ -1,3 +1,4 @@
+require("stroiman.keymap")
 local plugins = require("stroiman.plugins")
 
 plugins.load("plenary")
