@@ -108,7 +108,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client_id, event.buf, {
         autotrigger = true,
+        -- Suggestiong from vim help
+        -- convert = function(item)
+        --   return { abbr = item.label:gsub("%b()", "") }
+        -- end,
       })
+      vim.bo[event.buf].completeopt = "menu,popup,fuzzy,noinsert,preview"
     end
 
     -- vim.api.nvim_create_autocmd("BufWritePre", {
