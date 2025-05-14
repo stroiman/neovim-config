@@ -18,7 +18,7 @@ require("stroiman.navigation.harpoon")
 vim.keymap.set("n", "-", function()
   local file = vim.fn.expand("%:t")
   -- Turn the file into a regex search pattern by escaping "." characters
-  local search_pattern = file:gsub("%.", "%%%.")
+  local search_pattern = file:gsub("%.", "\\%.")
   vim.cmd.e("%:p:h")
 
   local style = vim.b.netrw_liststyle
@@ -33,5 +33,6 @@ vim.keymap.set("n", "-", function()
   if style == 3 then -- Tree
     search_pattern = "| " .. file .. "$"
   end
+  print("Search", search_pattern)
   vim.fn.search(search_pattern)
 end)
