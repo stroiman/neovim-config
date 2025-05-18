@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --   return { abbr = item.label:gsub("%b()", "") }
         -- end,
       })
-      vim.bo[event.buf].completeopt = "menu,popup,fuzzy,noinsert,preview"
+      vim.bo[event.buf].completeopt = "menuone,popup,fuzzy,noinsert,preview"
     end
 
     -- vim.api.nvim_create_autocmd("BufWritePre", {
