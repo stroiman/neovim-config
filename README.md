@@ -266,20 +266,43 @@ configuration. E.g., `git.lua` configures plugins relating to git integration.
 
 ### Plugin management
 
-As plugin managers seem to want to control plugin configuration, they really
-work against my purpose. So I manage plugin versioning and loading myself.
+Plugin managers generally seem to take control of more than I want, and work
+against my purpose of having a re-sourcable configuration. For that reason, I
+manage plugins myself.
 
-Without a plugin manager, I manage plugins myself. Plugins are installed as git
-submodules. This provides versioning capabilities, i.e., any version of my
-configuration already has a set of plugin versions; withouth the necessity of a
-lock-file.
+#### Git submodules
 
-At runtime plugins are loaded by calling `h: packadd`.
+Plugins are installed as git submodules. This provides versioning capabilities
+without the need of a lock-file as the entire neovim configuration has its own
+git repository.
+
+#### Loading submodules
+
+At runtime plugins are loaded by calling `packadd` - see `:help packadd`.
 I have a tiny bit of wrapper code surrounding this to avoid loading the
-same plugin twice; and defer loading during vim initialization
+same plugin twice; and defer loading during vim initialization.
 
 I created the user command, `:PlugInstall` that installs a plugin from github,
 adds it to the RTP, and rebuilds helptags; but does not load the plugin.
+
+I don't have any method to automatically update plugins - that is currently a
+shell command.
+
+#### Switching between different configurations
+
+Withoug a plugin manager, I can more easily experiment with different alternate
+solutions. E.g., I had an issue with `nvim-cmp`, so I changed it back to native nvim. That wasn't pleasant, so I may experiment with blink instead. I have the following config, which effectively selects which completion to use.
+
+```
+return {
+  --- @type "nvim-cmp" | "nvim" | nil
+  completion = "nvim-cmp",
+}
+```
+
+This doesn't trugger uninstalling plugins just because I experiment with
+alternate methods.
+
 
 ## Inspiration
 
@@ -294,7 +317,7 @@ over many, many years.
   somewhat dated, but still a valuable source of information about core vim
   concepts. The series ends with building a plugin. While there may be better
   sources for plugin development today; the series still introduces you to
-  almost all concepts you need to know about.
+  most of the concepts you need to know about.
 - [TJ DeVries' YouTube Channel] - TJ is a maintainer of neovim, and on his
   channel he regularly explains advanced setup. But TJ does an extremely good
   job of explaining things.
