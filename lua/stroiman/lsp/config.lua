@@ -26,6 +26,8 @@ For example, the keymap for code actions are only configured if the LSP
 supports the methods `"textDocument/codeAction"`
 
 --]]
+local config = require("stroiman.config")
+
 local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true })
 
 --- @return table
@@ -50,6 +52,23 @@ local function remember_buffer_map(buf, modes, lhs)
   -- local maps = vim.api.nvim_buf_get_var(buf, "stroiman_lsp_mapping") or {}
   table.insert(maps or {}, { modes = modes, lhs = lhs })
   vim.api.nvim_buf_set_var(buf, "stroiman_lsp_mapping", maps)
+end
+
+--- @param client vim.lsp.Client
+--- @param buf integer
+local function enable_completion(client, buf)
+  if config.completion == "nvim" then
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, buf, {
+        autotrigger = true,
+        -- Suggestiong from vim help
+        -- convert = function(item)
+        --   return { abbr = item.label:gsub("%b()", "") }
+        -- end,
+      })
+      vim.bo[buf].completeopt = "menuone,popup,fuzzy,noinsert,preview"
+    end
+  end
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -105,16 +124,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, { requires = "textDocument/inlayHint" })
 
-    if client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client_id, event.buf, {
-        autotrigger = true,
-        -- Suggestiong from vim help
-        -- convert = function(item)
-        --   return { abbr = item.label:gsub("%b()", "") }
-        -- end,
-      })
-      vim.bo[event.buf].completeopt = "menuone,popup,fuzzy,noinsert,preview"
-    end
+    enable_completion(client, buf)
 
     -- vim.api.nvim_create_autocmd("BufWritePre", {
     --   buffer = buf,
