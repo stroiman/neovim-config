@@ -114,6 +114,7 @@ return {
   ),
   s("handler", fmta("func(w http.ResponseWriter, r *http.Request) {\n\t<>\n}", i(0))),
   s("test", fmta("func Test<> (t *testing.T) {\n\t<>\n}", { i(1), i(2) })),
+  s("trun", fmta('t.Run("<>", func (t *testing.T) {\n\t<>\n})', { i(1), i(0) })),
   s(
     "met",
     fmta(
