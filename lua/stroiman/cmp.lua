@@ -82,7 +82,8 @@ cmp.setup({
   -- }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "luasnip" },
+    -- Temporarily disable sources, as cmp occasionally freezes in 100% CPU
+    -- { name = "luasnip" },
   }, {
     { name = "buffer" },
   }),
