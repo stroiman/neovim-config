@@ -91,3 +91,6 @@
 [submodule "pack/vendor/opt/nightfox"]
 	path = pack/vendor/opt/nightfox
 	url = https://github.com/EdenEast/nightfox.nvim
+[submodule "pack/vendor/opt/blink.cmp"]
+	path = pack/vendor/opt/blink.cmp
+	url = https://github.com/Saghen/blink.cmp
