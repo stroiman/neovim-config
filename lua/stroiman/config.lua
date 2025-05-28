@@ -1,4 +1,4 @@
 return {
-  --- @type "nvim-cmp" | "nvim" | nil
+  --- @type "nvim-cmp" | "nvim" | "blink" | nil
   completion = "nvim-cmp",
 }

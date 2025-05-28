@@ -1,8 +1,3 @@
-local config = require("stroiman.config")
-if config.completion ~= "nvim-cmp" then
-  return
-end
-
 local plugins = require("stroiman.plugins")
 plugins.load({
   "nvim-lspconfig",
