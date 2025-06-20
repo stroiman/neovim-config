@@ -94,3 +94,6 @@
 [submodule "pack/vendor/opt/blink.cmp"]
 	path = pack/vendor/opt/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
+[submodule "pack/vendor/opt/avante.nvim"]
+	path = pack/vendor/opt/avante.nvim
+	url = https://github.com/yetone/avante.nvim
