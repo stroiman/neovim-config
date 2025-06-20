@@ -1,0 +1,1 @@
+require("stroiman.ai.gp")
