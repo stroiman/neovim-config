@@ -97,3 +97,6 @@
 [submodule "pack/vendor/opt/avante.nvim"]
 	path = pack/vendor/opt/avante.nvim
 	url = https://github.com/yetone/avante.nvim
+[submodule "pack/vendor/opt/nui.nvim"]
+	path = pack/vendor/opt/nui.nvim
+	url = https://github.com/MunifTanjim/nui.nvim
