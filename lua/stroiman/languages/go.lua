@@ -1,4 +1,5 @@
 vim.cmd.packadd("gotest")
+local features = require("stroiman.features")
 
 local M = {}
 
@@ -17,17 +18,26 @@ installer.ensure_installed({
 
 -- Setup "gotest", an experimental plugin I'm working on that automatically
 -- executes tests when you save a .go file.
-local ok, gotest = pcall(require, "gotest")
-M.gotest_loaded = ok
+if features.gotest_enabled then
+  local ok, gotest = pcall(require, "gotest")
+  M.gotest_loaded = ok
 
-if ok then
-  M.gotest = gotest
-  gotest.setup({
-    aucommand_pattern = { "*.go", "*.cc", "*.h" },
-    output_window = {
-      show = "auto",
-    },
-  })
+  if ok then
+    M.gotest = gotest
+    gotest.setup({
+      aucommand_pattern = { "*.go", "*.cc", "*.h" },
+      output_window = {
+        show = "auto",
+      },
+    })
+
+    vim.keymap.set("n", "<leader>gx", function()
+      gotest.stop()
+    end)
+    vim.keymap.set("n", "<leader>gs", function()
+      gotest.start()
+    end)
+  end
 end
 
 -- Configure go-specific projections:

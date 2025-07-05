@@ -5,4 +5,6 @@
 return {
   --- @type "nvim-cmp" | "nvim" | "blink" | nil
   completion = "blink",
+  --- @type boolean
+  gotest_enabled = false,
 }
