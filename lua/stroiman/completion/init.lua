@@ -1,8 +1,8 @@
-local config = require("stroiman.config")
-if config.completion == "nvim-cmp" then
+local features = require("stroiman.features")
+if features.completion == "nvim-cmp" then
   require("stroiman.completion.nvim-cmp")
 end
 
-if config.completion == "blink" then
+if features.completion == "blink" then
   require("stroiman.completion.blink")
 end

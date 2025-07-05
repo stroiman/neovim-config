@@ -26,7 +26,7 @@ For example, the keymap for code actions are only configured if the LSP
 supports the methods `"textDocument/codeAction"`
 
 --]]
-local config = require("stroiman.config")
+local features = require("stroiman.features")
 
 local group = vim.api.nvim_create_augroup("stroiman_lspconfig", { clear = true })
 
@@ -57,7 +57,7 @@ end
 --- @param client vim.lsp.Client
 --- @param buf integer
 local function enable_completion(client, buf)
-  if config.completion == "nvim" then
+  if features.completion == "nvim" then
     if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client.id, buf, {
         autotrigger = true,
