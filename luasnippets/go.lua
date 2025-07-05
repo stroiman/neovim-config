@@ -93,7 +93,19 @@ return {
   s("it", fmta('It("<>", func() {\n  <>\n})', { i(1), i(0) })),
   s("bef", fmta("<>(func() {\n  <>\n})", { c(1, { t("BeforeEach"), t("BeforeAll") }), i(0) })),
   s("aft", fmta("<>(func() {\n  <>\n})", { c(1, { t("AfterEach"), t("AfterAll") }), i(0) })),
-  s("fn", fmta("func <>(<>) <> {\n  <>\n}", { i(1), i(2), i(3), i(0) })),
+  s(
+    "fn",
+    fmta("func <> <>(<>) <> {\n  <>\n}", {
+      i(1),
+      c(2, {
+        sn(nil, i(1)),
+        sn(nil, fmta("[<>]", { i(1, "T any") })),
+      }),
+      i(3),
+      i(4),
+      i(0),
+    })
+  ),
 
   s(
     "for",
@@ -202,4 +214,14 @@ func (s <rec>) <name>() {
       { i(1), i(2), i(3), i(4), rep(3), rep(1), i(0) }
     )
   ),
+  s(
+    "timeout",
+    fmta("ctx, cancel := context.WithTimeout(<>, <>)\ndefer cancel()\n<>", {
+      c(1, { t("t.Context()"), i(1) }),
+      c(2, { t("100 * time.Millisecond"), i(1) }),
+      i(0),
+    })
+  ),
+  --
+  -- s("tany", fmta("[T any]", {})),
 }
