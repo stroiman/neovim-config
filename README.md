@@ -33,7 +33,7 @@ Launch neovim, and run
 > [!NOTE]
 > On first startup, LSPs that **I** use will be installed by Mason.
 
-### Non-default configuration folder
+### Using a non-default configuration folder
 
 By default, neovim will load the configuration from the folder, `nvim/` inside
 `$HOME/.config`. The default can be overridden using the `NVIM_APPNAME`
@@ -71,17 +71,25 @@ configuration_.
 Some changes _may_ require a restart, if I accidentally placed neovim in a bad
 state. But restarting should be the exception, not the default.
 
+Also, I want to be able to experiment with alternate solutions to the same
+problem, e.g., switch between nvim-cmp and blink - each with different
+configuration options.
+
 ## Configuration
 
 There's some documentation in `init.lua` describing the reasoning behind the
 choices. I will extend as I get more time.
 
+For enabling/disabling different parts of the configuration, a poor-man's
+"feature toggle" is controlled from
+[`features.lua`](./lua/stroiman/features.lua)
+
 ### Navigation
 
-I don't have a fancy filetree plugin. I used to have neotree but a bug caused it
-to hijack netrw, and I removed it. It was never a help in navigating code; but
-very useful when explaining things to a colleage. It provides a better visual
-context that a path in a stataus line does.
+I don't have a fancy filetree plugin. I used to have neotree, but removed it
+because it introduced a bug that caused it to hijack netrw. It was never a help
+navigating code; but useful when dicsussing with peers as it provides a better
+visual context that a path in a stataus line does.
 
 My navigation relies on these plugins.
 
@@ -92,8 +100,6 @@ My navigation relies on these plugins.
 - Settings inspired by [vim-vinegar], e.g., mapping `-` to open the directory,
   showing the current file in netrw. In netrw itself, `-` navigates to parent
   directory; so this just acts as an "up" command.
-
-
 
 Note: The version of harpoon used is a fork of the [original harpoon](https://github.com/ThePrimeagen/harpoon) by [The Primeagen]. The original version has
 issues when using multiple working folders.
