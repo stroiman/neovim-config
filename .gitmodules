@@ -103,3 +103,6 @@
 [submodule "pack/vendor/opt/render-markdown.nvim"]
 	path = pack/vendor/opt/render-markdown.nvim
 	url = https://github.com/MeanderingProgrammer/render-markdown.nvim
+[submodule "pack/vendor/opt/nvim-web-devicons"]
+	path = pack/vendor/opt/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons
