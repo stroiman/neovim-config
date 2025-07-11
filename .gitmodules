@@ -100,3 +100,6 @@
 [submodule "pack/vendor/opt/nui.nvim"]
 	path = pack/vendor/opt/nui.nvim
 	url = https://github.com/MunifTanjim/nui.nvim
+[submodule "pack/vendor/opt/render-markdown.nvim"]
+	path = pack/vendor/opt/render-markdown.nvim
+	url = https://github.com/MeanderingProgrammer/render-markdown.nvim
