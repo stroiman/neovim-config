@@ -80,9 +80,8 @@ configuration options.
 There's some documentation in `init.lua` describing the reasoning behind the
 choices. I will extend as I get more time.
 
-For enabling/disabling different parts of the configuration, a poor-man's
-"feature toggle" is controlled from
-[`features.lua`](./lua/stroiman/features.lua)
+For enabling/disabling different parts of the configuration, a simple feature
+toggle is controlled from [`features.lua`](./lua/stroiman/features.lua)
 
 ### Navigation
 
@@ -134,11 +133,14 @@ vim.opt.signcolumn = "yes"
 
 #### Completion.
 
-The current completion is temporarily a vanilla neovim completion.
+The current completion is using [blink.cmp], but not configured extensively.
 
-While I used to use [nvim-cmp], I've experienced neovim locking on 100% CPU
-during completion; a problem that I saw in two different configs on after an
-nvim 0.11 upgrade.
+I used to use [nvim-cmp] - but after an update, neovim would occasionally
+freezing using 100% CPU during completion. The nvim-cmp configuration still
+exists as a fallback.
+
+[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
+[blink.cmp]: https://github.com/Saghen/blink.cmp
 
 #### LSP
 
