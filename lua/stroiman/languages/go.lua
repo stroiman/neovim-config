@@ -25,7 +25,7 @@ if features.gotest_enabled then
   if ok then
     M.gotest = gotest
     gotest.setup({
-      aucommand_pattern = { "*.go", "*.cc", "*.h" },
+      aucommand_pattern = { "*.go", "*.cc", "*.h", "*.js" },
       output_window = {
         show = "auto",
       },
