@@ -222,6 +222,7 @@ func (s <rec>) <name>() {
       i(0),
     })
   ),
+  s("case", fmta("case <>: <>", { i(1), i(2) })),
   --
   -- s("tany", fmta("[T any]", {})),
 }
