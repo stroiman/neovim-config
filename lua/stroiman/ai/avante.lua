@@ -1,8 +1,12 @@
-local plugins = require("stroiman.plugins")
-plugins.load("avante.nvim")
-plugins.load("nui.nvim")
+local f = require("stroiman.features")
+if not f.ai.avante.enabled then
+  return nil
+end
 
 local function setup()
+  local plugins = require("stroiman.plugins")
+  plugins.load({ "nui.nvim", "avante.nvim" })
+
   local avante = require("avante")
   avante.setup({
     provider = "ollama",

@@ -7,4 +7,11 @@ return {
   completion = "blink",
   --- @type boolean
   gotest_enabled = true,
+
+  ai = {
+    avante = {
+      --- @type boolean
+      enabled = false,
+    },
+  },
 }
