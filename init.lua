@@ -38,6 +38,8 @@ local function set_options(opt)
 
   opt.splitright = true -- Open new vertical split to the right
   opt.splitbelow = false -- Open new horizontal split below
+
+  opt.swapfile = false
 end
 
 set_options(vim.go)
