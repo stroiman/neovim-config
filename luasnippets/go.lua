@@ -223,6 +223,7 @@ func (s <rec>) <name>() {
     })
   ),
   s("case", fmta("case <>: <>", { i(1), i(2) })),
+  s("impass", fmta('import "github.com/stretchr/testify/assert"', {})),
   --
   -- s("tany", fmta("[T any]", {})),
 }

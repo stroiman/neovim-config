@@ -13,8 +13,13 @@ local function setup()
     providers = {
       ollama = {
         endpoint = "http://localhost:11434",
-        model = "devstral:latest",
+        -- model = "devstral:latest",
+        model = "qwq:32b",
       },
+      -- qwq = {
+      --   endpoint = "http://127.0.0.1:11434",
+      --   model = "qwq:32b",
+      -- },
     },
   })
 end
