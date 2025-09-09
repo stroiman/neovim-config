@@ -106,3 +106,6 @@
 [submodule "pack/vendor/opt/nvim-web-devicons"]
 	path = pack/vendor/opt/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons
+[submodule "pack/vendor/opt/copilot.vim"]
+	path = pack/vendor/opt/copilot.vim
+	url = https://github.com/github/copilot.vim
