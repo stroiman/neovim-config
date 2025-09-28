@@ -140,12 +140,17 @@ vim.api.nvim_create_autocmd("LspDetach", {
   group = group,
   callback = function(event)
     local buf = event.buf
+    local buf_map = get_buffer_map(buf)
+    local ok, _ = pcall(vim.api.nvim_buf_del_var, buf, "stroiman_lsp_mapping")
+    if ok then
+    end
     vim.api.nvim_clear_autocmds({ buffer = buf, group = group })
 
-    for _, map in ipairs(get_buffer_map(buf)) do
-      vim.keymap.del(map.modes, map.lhs, { buffer = buf })
+    if buf_map then
+      for _, map in pairs(buf_map) do
+        -- vim.keymap.del(map.modes, map.lhs, { buffer = buf })
+      end
     end
-    vim.api.nvim_buf_del_var(buf, "stroiman_lsp_mapping")
   end,
 })
 
