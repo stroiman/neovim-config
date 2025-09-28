@@ -138,4 +138,17 @@ M.load = function(plugin_name, opts)
   vim.g.stroiman_plugins_loaded = plugins
 end
 
+--- Ensure a function is called after vim has started. If vim has already
+--- started, the function is called immediately.
+--- @param fn function
+M.setup = function(fn)
+  if vim.v.vim_did_enter == 1 then
+    fn()
+  else
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = fn,
+    })
+  end
+end
+
 return M
