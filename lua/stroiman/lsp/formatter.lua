@@ -6,11 +6,13 @@ conform.setup({
   formatters_by_ft = {
     lua = { "stylua" },
     javascript = { "prettierd" },
+    vue = { "prettierd" },
     html = { "prettierd" },
     typescript = { "prettierd" },
     typescriptreact = { "prettierd" },
     css = { "prettierd" },
     json = { "prettierd" },
+    jsonc = { "prettierd" },
     ocaml = { "ocamlformat" },
     go = { "goimports", "golines", "gofmt" },
   },
