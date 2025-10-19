@@ -6,3 +6,6 @@ install/pull:
 
 install/luasnip:
 	make -C pack/vendor/opt/luasnip install_jsregexp
+
+update:
+	./update
