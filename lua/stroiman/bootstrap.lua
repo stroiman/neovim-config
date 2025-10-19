@@ -14,6 +14,7 @@ require("stroiman.treesitter")
 require("stroiman.completion")
 require("stroiman.luasnip")
 require("stroiman.languages")
+require("stroiman.formatter")
 require("stroiman.ai")
 
 vim.cmd.packadd("vim-tmux-navigator")

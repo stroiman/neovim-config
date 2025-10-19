@@ -1,5 +1,8 @@
 vim.cmd.packadd("gotest")
 local features = require("stroiman.features")
+local formatters = require("stroiman.languages.formatters")
+
+formatters.add_formatter("template", { "prettierd" })
 
 local M = {}
 
