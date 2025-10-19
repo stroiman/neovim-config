@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob
+
+base=$PWD
+
+checkout_latest_tag () {
+  latest=`git tag | sort -V | tail -1`
+  git checkout $latest
+}
+
+checkout () {
+  git checkout $1 &> /dev/null
+}
+
+for dir in "pack/vendor/opt"/*; do
+  pushd "$dir" > /dev/null
+  base=$(basename $dir)
+  case $base in
+	blink.cmp)
+	  echo "Update blink $dir"
+	  checkout_latest_tag
+	  ;;
+	*)
+	  if checkout master || checkout main; then
+		git pull > /dev/null
+		echo "Updated $dir"
+	  else
+		echo "Failed to update $dir"
+	  fi
+	  ;;
+  esac
+  popd > /dev/null
+done
