@@ -23,9 +23,7 @@ local function install(pkg)
   refresh()
   local arg_type = type(pkg)
   if arg_type == "string" and not registry.is_installed(pkg) then
-    print("Installing", pkg)
     require("mason-registry").get_package(pkg):install()
-    print("")
   end
   if arg_type == "table" then
     for _, name in ipairs(pkg) do
