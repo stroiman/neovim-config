@@ -1,14 +1,24 @@
 local plugins = require("stroiman.plugins")
+local features = require("stroiman.features")
+local transparent = features.ui.transparent
 
 plugins.load("nightfox")
--- vim.cmd.colorscheme("catppuccin")
+require("nightfox").setup({
+  options = {
+    transparent = transparent,
+  },
+})
 
 require("stroiman.plugins").load("gruvbox")
+require("gruvbox").setup({
+  transparent_mode = transparent,
+})
 require("gruvbox").setup({
   contrast = "hard",
 })
 
 vim.cmd.colorscheme("nightfox")
+-- vim.cmd.colorscheme("catppuccin")
 
 -- UI changes
 vim.keymap.set("n", "<leader>ul", function()

@@ -14,4 +14,8 @@ return {
       enabled = false,
     },
   },
+
+  ui = {
+    transparent = true,
+  },
 }
