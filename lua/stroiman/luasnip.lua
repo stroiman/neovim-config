@@ -54,3 +54,5 @@ end, { desc = "Edit snippets for current filetype" })
 -- javascript are also applicaable for typescript, etc.
 require("luasnip").filetype_extend("typescript", { "javascript" })
 require("luasnip").filetype_extend("typescriptreact", { "typescript", "javascript", "javascriptreact", "html" })
+require("luasnip").filetype_extend("template", { "html" })
+require("luasnip").filetype_extend("vue", { "html" })
