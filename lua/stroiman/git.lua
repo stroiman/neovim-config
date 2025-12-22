@@ -20,6 +20,10 @@ vim.keymap.set("n", "<leader>gg", function()
   vim.b.stroiman_prev_win = win
 end)
 
+vim.keymap.set("n", "<leader>gk", function()
+  vim.cmd("silent !gitk --all -- % &")
+end)
+
 local group = vim.api.nvim_create_augroup("stroiman_fugitive", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
