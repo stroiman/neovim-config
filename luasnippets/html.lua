@@ -14,13 +14,14 @@ return {
   ),
   s(
     "d",
-    fmt("<div {}>{}</div>\n{}", {
+    fmt("<div {}>{}</div>{}", {
       i(1),
       i(2),
       i(0),
     })
   ),
   s("id", fmt('id="{}"', { i(1) })),
+  s("c", fmt('class="{}"', { i(1) })),
   s("cn", fmt('className="{}"', { i(1) })),
   s("p", fmt("<p {}>\n{}\n</p>", { i(1), i(0) })),
   s("br", t("<br />")),

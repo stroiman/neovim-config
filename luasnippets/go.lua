@@ -226,4 +226,11 @@ func (s <rec>) <name>() {
   s("impass", fmta('import "github.com/stretchr/testify/assert"', {})),
   --
   -- s("tany", fmta("[T any]", {})),
+  s(
+    "seq",
+    fmta("return func(yield func(<>) bool) {\n\t<>\n}", {
+      i(1),
+      i(0),
+    })
+  ),
 }
