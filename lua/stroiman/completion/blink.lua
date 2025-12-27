@@ -9,7 +9,7 @@ blink.setup({
     ["<C-d>"] = { "scroll_signature_down", "scroll_documentation_down", "fallback" },
     --
     -- -- default in all keymap presets
-    ["<C-k>"] = { "snippet_forward", "show_signature", "hide_signature", "fallback" },
+    ["<C-k>"] = { "snippet_forward", "fallback" },
     ["<C-h>"] = { "snippet_backward", "show_signature", "hide_signature", "fallback" },
     ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
     ["<C-e>"] = { "hide", "fallback" },
@@ -29,6 +29,9 @@ blink.setup({
     -- ghost_text = {
     --   enabled = true,
     -- },
+    accept = {
+      auto_brackets = { enabled = false },
+    },
     documentation = {
       auto_show = true,
     },

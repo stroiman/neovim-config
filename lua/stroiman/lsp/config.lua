@@ -86,6 +86,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --- @class MapOpts
     --- @field desc? string
     --- @field requires? string A method that the LSP must support for this command. See: `:h lsp-api`.
+    --- @field modes? string | string[]
 
     --- @param opts? MapOpts
     local map = function(keys, func, opts)
@@ -94,7 +95,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       local desc = opts.desc and "LSP: " .. opts.desc
       local map_opt = { buffer = buf, desc = desc }
-      local modes = "n"
+      --- @type string | string[]
+      local modes = { "n" }
+      if opts.modes then
+        modes = opts.modes
+      end
       if requires and not client:supports_method(requires) then
         vim.keymap.set(modes, keys, function()
           print("LSP: Feature not supported: " .. requires)
@@ -118,6 +123,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, {
       desc = "Code actions",
       requires = "textDocument/codeAction",
+      modes = { "n", "v" },
     })
 
     map("<leader>ch", function() -- Code Hint
