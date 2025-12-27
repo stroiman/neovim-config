@@ -1,3 +1,3 @@
--- require("stroiman.ai.gp")
--- require("stroiman.ai.avante")
--- require("stroiman.ai.copilot")
+require("stroiman.ai.copilot")
+require("stroiman.ai.gp")
+require("stroiman.ai.avante")

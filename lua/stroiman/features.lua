@@ -13,6 +13,14 @@ return {
       --- @type boolean
       enabled = false,
     },
+    copilot = {
+      --- @type boolean
+      enabled = false,
+    },
+    gp = {
+      --- @type boolean
+      enabled = false,
+    },
   },
 
   ui = {

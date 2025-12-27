@@ -1,3 +1,8 @@
+local f = require("stroiman.features")
+if not f.ai.gp.enabled then
+  return
+end
+
 require("stroiman.plugins").load("gp")
 local gp = require("gp")
 

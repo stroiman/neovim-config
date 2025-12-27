@@ -1,4 +1,8 @@
 local p = require("stroiman.plugins")
+local f = require("stroiman.features")
+if not f.ai.copilot.enabled then
+  return
+end
 
 local function setup()
   p.load("copilot.vim")
