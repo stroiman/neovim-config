@@ -1,6 +1,6 @@
 local plugins = require("stroiman.plugins")
 local formatters = require("stroiman.languages.formatters")
-plugins.load("conform")
+plugins.load("conform", { git_ref = "master" })
 
 local formatters_by_ft = formatters.get_formatters()
 
