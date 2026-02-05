@@ -89,6 +89,10 @@ end, {
   nargs = 1,
 })
 
+vim.api.nvim_create_user_command("PlugUpgrade", function(args)
+  M.upgrade()
+end, {})
+
 --- Returns if vim is starting.
 --- @return boolean
 M.starting = function()
@@ -96,6 +100,7 @@ M.starting = function()
 end
 
 --- @class LoadOpts
+--- @field git_ref? string Optional specification of git ref for auto-updates
 --- @field skip_load? boolean When true, only RTP is updated.
 
 --- Ensure a 3rd party plugin is loaded from `pack/*/opt/` folder. Calling
@@ -103,7 +108,6 @@ end
 --- @param plugin_name string | string[]
 --- @param opts? LoadOpts
 M.load = function(plugin_name, opts)
-  opts = opts or {}
   if type(plugin_name) == "table" then
     for _, name in ipairs(plugin_name) do
       M.load(name)
@@ -119,23 +123,57 @@ M.load = function(plugin_name, opts)
   end
 
   local plugin = plugins[plugin_name]
-  if not plugin then
+  if plugin then
+    if opts then
+      plugins[plugin_name] = opts
+    end
+  else
+    opts = opts or {}
     vim.cmd({
       cmd = "packadd",
       args = { plugin_name },
-      --
+      -- Bang only adds to RTP and skips loading. Set this if "skip_load" is
+      -- explicitly specified, or during startup, as vim will load packages from
+      -- RTP automatically after startup.
       bang = opts.skip_load or M.starting(),
     })
     -- Not partucularly clever, but later, I might add behaviour to detect
     -- plugins on the file system, and see if there are plugins that are not
     -- loaded, providing a hint for cleanup.
-    if not opts.skip_load then
-      plugins[plugin_name] = { loaded = true }
-    end
+    plugins[plugin_name] = opts
   end
 
   -- Store the modified state.
   vim.g.stroiman_plugins_loaded = plugins
+end
+
+M.upgrade = function()
+  ---@type {[string]: LoadOpts}
+  local plugins = vim.g.stroiman_plugins_loaded
+  check_diff(function()
+    for name, opts in pairs(plugins) do
+      if opts.git_ref then
+        print("Upgrading plugin: " .. name)
+        local plugin_subpath = "pack/vendor/opt/" .. name
+        local plugin_path = vim.fn.stdpath("config") .. "/" .. plugin_subpath
+        local ref = "remotes/origin/" .. opts.git_ref
+        vim.system({
+          "git",
+          "checkout",
+          ref,
+        }, {
+          cwd = plugin_path,
+          text = true,
+        }, function(obj)
+          if obj.code == 0 then
+            print("Plugin updated: " .. name)
+          else
+            print("Error installing plugin\n", obj.stdout, obj.stderr)
+          end
+        end)
+      end
+    end
+  end)
 end
 
 --- Ensure a function is called after vim has started. If vim has already

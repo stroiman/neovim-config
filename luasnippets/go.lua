@@ -233,4 +233,18 @@ func (s <rec>) <name>() {
       i(0),
     })
   ),
+  s(
+    "lock",
+    fmta("<>.mu.Lock()\ndefer <>.mu.Unlock()\n<>", {
+      i(1),
+      rep(1),
+      i(0),
+    })
+  ),
+  s(
+    "synctest",
+    fmta("synctest.Test(t, func(t *testing.T) {\n<>\n}\n)", {
+      i(0),
+    })
+  ),
 }

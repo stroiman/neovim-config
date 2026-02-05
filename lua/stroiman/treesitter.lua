@@ -1,12 +1,12 @@
 local plugins = require("stroiman.plugins")
-plugins.load("nvim-treesitter")
+plugins.load("nvim-treesitter", { git_ref = "main" })
 
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { "lua", "vim", "vimdoc", "query" },
   sync_install = false,
   auto_install = true,
   ignore_install = {},
   modules = {},
-  highlight = { enable = true }
-}
+  highlight = { enable = true },
+})
