@@ -157,6 +157,14 @@ M.upgrade = function()
         local plugin_subpath = "pack/vendor/opt/" .. name
         local plugin_path = vim.fn.stdpath("config") .. "/" .. plugin_subpath
         local ref = "remotes/origin/" .. opts.git_ref
+        vim.system({ "git", "fetch", }, {
+          cwd = plugin_path, text = true,
+        }, function(obj)
+          if obj.code > 1 then
+            print("Error installing plugin\n", obj.stdout, obj.stderr)
+            return
+          end
+        end)
         vim.system({
           "git",
           "checkout",
