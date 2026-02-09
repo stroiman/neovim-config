@@ -91,3 +91,6 @@
 [submodule "pack/vendor/opt/copilot.vim"]
 	path = pack/vendor/opt/copilot.vim
 	url = https://github.com/github/copilot.vim
+[submodule "pack/vendor/opt/codecompanion.nvim"]
+	path = pack/vendor/opt/codecompanion.nvim
+	url = https://github.com/olimorris/codecompanion.nvim
