@@ -1,5 +1,5 @@
 local plugins = require("stroiman.plugins")
-plugins.load("nvim-treesitter", { git_ref = "main" })
+plugins.load("nvim-treesitter", { git_ref = "master" })
 
 require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)

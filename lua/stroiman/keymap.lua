@@ -8,3 +8,5 @@ vim.keymap.set("n", "H", "^", { desc = "Move cursor to beginning of line " })
 vim.keymap.set("n", "L", "$", { desc = "Move cursor to end of line" })
 
 vim.keymap.set("n", "S", "i<cr><esc>", { desc = "Split line at cursor position" })
+
+vim.keymap.set("n", "<leader>cc", ":cclose<cr>")

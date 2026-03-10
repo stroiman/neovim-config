@@ -19,6 +19,12 @@ ls.config.set_config({
 
 require("luasnip.loaders.from_lua").load()
 
+vim.keymap.set({ "i" }, "<C-g>", function()
+  if ls.expandable() then
+    ls.expand()
+  end
+end)
+
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -55,4 +61,4 @@ end, { desc = "Edit snippets for current filetype" })
 require("luasnip").filetype_extend("typescript", { "javascript" })
 require("luasnip").filetype_extend("typescriptreact", { "typescript", "javascript", "javascriptreact", "html" })
 require("luasnip").filetype_extend("template", { "html" })
-require("luasnip").filetype_extend("vue", { "html" })
+require("luasnip").filetype_extend("vue", { "html", "typescript", "javascript" })

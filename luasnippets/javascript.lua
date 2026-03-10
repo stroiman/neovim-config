@@ -112,4 +112,12 @@ return {
       t("async"),
     }), i(2), i(0) })
   ),
+  s(
+    "cls",
+    fmta(
+      "<>class <> <>{\n<>\n}\n",
+      { c(1, { t("export "), t("") }), i(2), c(3, { fmta("extends <>", { i(1) }), t("") }), i(0) }
+    )
+  ),
+  s("ctor", fmta("constructor(<>) {\nsuper(<>)\n<>\n}", { i(1), rep(2), i(0) })),
 }

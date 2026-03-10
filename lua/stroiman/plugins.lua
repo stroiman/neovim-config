@@ -150,7 +150,7 @@ end
 M.upgrade = function()
   ---@type {[string]: LoadOpts}
   local plugins = vim.g.stroiman_plugins_loaded
-  check_diff(function()
+  -- check_diff(function()
     for name, opts in pairs(plugins) do
       if opts.git_ref then
         print("Upgrading plugin: " .. name)
@@ -164,7 +164,6 @@ M.upgrade = function()
             print("Error installing plugin\n", obj.stdout, obj.stderr)
             return
           end
-        end)
         vim.system({
           "git",
           "checkout",
@@ -179,9 +178,10 @@ M.upgrade = function()
             print("Error installing plugin\n", obj.stdout, obj.stderr)
           end
         end)
+        end)
       end
     end
-  end)
+  -- end)
 end
 
 --- Ensure a function is called after vim has started. If vim has already

@@ -247,4 +247,31 @@ func (s <rec>) <name>() {
       i(0),
     })
   ),
+  s(
+    "seq",
+    fmta("iter.Seq[<>] {\nreturn func(yield func(<>) bool) {\n<>\n}\n}", {
+      i(1),
+      rep(1),
+      i(0),
+    })
+  ),
+  s(
+    "seq2",
+    fmta("iter.Seq2[<>,<>] {\nreturn func(yield func(<>, <>) bool) {\n<>\n}\n}", {
+      i(1),
+      i(2),
+      rep(1),
+      rep(2),
+      i(0),
+    })
+  ),
+  s(
+    "iota",
+    fmta("type <> int\n\nconst (\n\t<> <> = iota\n\t<>\n)\n", {
+      i(1),
+      i(2),
+      rep(1),
+      i(0),
+    })
+  ),
 }
