@@ -9,6 +9,10 @@ return {
   gotest_enabled = true,
 
   ai = {
+    codecompanion = {
+      --- @type boolean
+      enabled = true,
+    },
     avante = {
       --- @type boolean
       enabled = false,
