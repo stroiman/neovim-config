@@ -119,5 +119,5 @@ return {
       { c(1, { t("export "), t("") }), i(2), c(3, { fmta("extends <>", { i(1) }), t("") }), i(0) }
     )
   ),
-  s("ctor", fmta("constructor(<>) {\nsuper(<>)\n<>\n}", { i(1), rep(2), i(0) })),
+  s("ctor", fmta("constructor(<>) {\nsuper(<>)\n<>\n}", { i(1), rep(1), i(0) })),
 }
