@@ -25,6 +25,6 @@ defines keys for the different LSPs, so the file in `lsp/`, and call to
 --]]
 
 local plugins = require("stroiman.plugins")
-plugins.load("nvim-lspconfig")
+plugins.load("nvim-lspconfig", { git_ref = "master" })
 
 require("stroiman.lsp.config")
