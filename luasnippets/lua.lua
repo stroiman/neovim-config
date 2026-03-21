@@ -48,5 +48,6 @@ end
       }
     )
   ),
+  s("pi", fmta("print(vim.inspect(<>))<>", { i(1), i(0) })),
   -- s("s", fmta('s("<>", <>("", {<>}))', { i(1), c(2, { t("fmt"), t("fmta") }), i(0) })),
 }
