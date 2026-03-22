@@ -13,6 +13,7 @@ installer.ensure_installed({
   "gopls",
   "goimports",
   "golines",
+  "templ",
 })
 
 -- For working with v8go - maybe extract to a separate configuration
@@ -89,6 +90,7 @@ projections.add_projection("go.mod", {
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("templ")
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = group,
