@@ -96,20 +96,20 @@ require("stroiman.navigation.projectionist").add_projection("next.config.*", {
 
 local projectionist = require("stroiman.navigation.projectionist")
 
-projectionist.add_projection("vitest.config.ts", {
-  ["src/*.ts"] = {
-    command = "src",
-    alternate = {
-      "tests/unit/{}.test.ts",
-    },
-  },
-  ["tests/unit/*.test.ts"] = {
-    command = "test",
-    alternate = {
-      "src/{}.ts",
-    },
-  },
-})
+-- projectionist.add_projection("vitest.config.ts", {
+--   ["src/*.ts"] = {
+--     command = "src",
+--     alternate = {
+--       "tests/unit/{}.test.ts",
+--     },
+--   },
+--   ["tests/unit/*.test.ts"] = {
+--     command = "test",
+--     alternate = {
+--       "src/{}.ts",
+--     },
+--   },
+-- })
 
 require("stroiman.navigation.projectionist").add_projection("electron.vite.config.ts", {
   ["src/*.ts"] = {
@@ -124,4 +124,10 @@ require("stroiman.navigation.projectionist").add_projection("electron.vite.confi
       "src/{}.ts",
     },
   },
+  -- ["test/integration/*.test.ts"] = {
+  --   command = "integration",
+  --   alternate = {
+  --     "src/{}.ts",
+  --   },
+  -- },
 })
