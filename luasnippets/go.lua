@@ -145,6 +145,36 @@ func (<rec>) <name> (<args>) <ret_val> {
     )
   ),
   s(
+    "opts",
+    fmta(
+      [[type <name>Opt func(*<typ>)
+<finish>]],
+      {
+        name = i(1),
+        typ = i(2),
+        finish = i(0),
+      }
+    )
+  ),
+  s(
+    "opt",
+    fmta(
+      [[
+func With<name>(<args>) <ret_type> {
+  return func(*<typ>) {
+    <finish>
+  }
+}]],
+      {
+        name = i(1),
+        args = i(2),
+        ret_type = i(3),
+        typ = i(4),
+        finish = i(0),
+      }
+    )
+  ),
+  s(
     "stest",
     fmta(
       [[
@@ -275,4 +305,5 @@ func (s <rec>) <name>() {
       i(0),
     })
   ),
+  s("tcc", fmta("ctx := t.Context()", {})),
 }
