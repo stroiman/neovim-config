@@ -86,6 +86,18 @@ projections.add_projection("go.mod", {
       "{}.go",
     },
   },
+  ["internal/web/i18n/locales/en/*.yaml"] = {
+    command = "en",
+    alternate = {
+      "internal/web/i18n/locales/da/{}.yaml",
+    },
+  },
+  ["internal/web/i18n/locales/da/*.yaml"] = {
+    command = "da",
+    alternate = {
+      "internal/web/i18n/locales/en/{}.yaml",
+    },
+  },
 })
 
 vim.lsp.enable("gopls")
