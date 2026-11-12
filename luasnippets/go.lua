@@ -306,4 +306,5 @@ func (s <rec>) <name>() {
     })
   ),
   s("tcc", fmta("ctx := t.Context()", {})),
+  s("rcc", fmta("ctx := r.Context()", {})),
 }
