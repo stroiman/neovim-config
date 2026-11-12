@@ -7,6 +7,7 @@ local formatters_by_ft = formatters.get_formatters()
 formatters_by_ft["lua"] = { "stylua" }
 formatters_by_ft["ocaml"] = { "ocamlformat" }
 formatters_by_ft["go"] = { "goimports", "golines", "gofmt" }
+formatters_by_ft["cucumber"] = { "reformat-gherkin" }
 
 local conform = require("conform")
 conform.setup({

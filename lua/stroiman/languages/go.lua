@@ -54,11 +54,18 @@ local projections = require("stroiman.navigation.projectionist")
 projections.add_projection("go.mod", {
   ["*.templ"] = {
     command = "templ",
-    alternate = { "{}_templ.go" },
+    alternate = {
+      "{}_handler.go",
+      "{}_templ.go",
+    },
   },
   ["*_templ.go"] = {
     command = "templ_go",
     alternate = { "{}.templ" },
+  },
+  ["*_handler.go"] = {
+    command = "handler",
+    alternate = { "{}.templ", "{}_test.go" },
   },
   ["*.go"] = {
     command = "src",
