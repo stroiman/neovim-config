@@ -307,4 +307,14 @@ func (s <rec>) <name>() {
   ),
   s("tcc", fmta("ctx := t.Context()", {})),
   s("rcc", fmta("ctx := r.Context()", {})),
+  s(
+    "godog",
+    fmta(
+      [[type <>Steps struct { }
+func (s <>Steps) InitializeScenario(ctx *godog.ScenarioContext) {
+  <>
+}]],
+      { i(1), rep(1), i(0) }
+    )
+  ),
 }
